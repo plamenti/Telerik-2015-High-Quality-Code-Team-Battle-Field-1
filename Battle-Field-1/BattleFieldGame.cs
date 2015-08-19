@@ -69,7 +69,7 @@ namespace BattleField
 
             }
 
-            Methods.NapylniMasiva(n, rows, cols, field);
+            Methods.FillingTheArray(n, rows, cols, field);
             Methods.PrintArray(rows, cols, field);
             int countPlayed = 0;
             Methods.vremeEIgrachaDaDeistva(n, rows, cols, field, countPlayed);
