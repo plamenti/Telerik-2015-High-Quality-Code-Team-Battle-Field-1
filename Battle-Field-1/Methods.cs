@@ -67,10 +67,10 @@
                 }
             }
 
-            Methods.FillingTheArray(battleFieldSize, fieldHeight, fieldWidth, battleField);
-            Methods.PrintArray(fieldHeight, fieldWidth, battleField);
+            BattlefieldGameEngine.FillingTheArray(battleFieldSize, fieldHeight, fieldWidth, battleField);
+            BattlefieldGameEngine.PrintArray(fieldHeight, fieldWidth, battleField);
             int countPlayed = 0;
-            Methods.VremeEIgrachaDaDeistva(battleFieldSize, fieldHeight, fieldWidth, battleField, countPlayed);
+            BattlefieldGameEngine.PlayerTurn(battleFieldSize, fieldHeight, fieldWidth, battleField, countPlayed);
         }
 
         public static void FillingTheArray(int n, int rows, int cols, string[,] workField)
