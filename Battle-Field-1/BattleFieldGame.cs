@@ -20,19 +20,19 @@
                 battleFieldSize = Convert.ToInt32(Console.ReadLine());
             }
 
-            int rows = battleFieldSize + 2;
-            int cols = (battleFieldSize * 2) + 2;
+            int fieldHeight = battleFieldSize + 2;
+            int fieldWidth = (battleFieldSize * 2) + 2;
 
-            string[,] battleField = new string[rows, cols];
+            string[,] battleField = new string[fieldHeight, fieldWidth];
 
             battleField[0, 0] = " ";
             battleField[0, 1] = " ";
             battleField[1, 0] = " ";
             battleField[1, 1] = " ";
 
-            for (int row = 2; row < rows; row++)
+            for (int row = 2; row < fieldHeight; row++)
             {
-                for (int col = 2; col < cols; col++)
+                for (int col = 2; col < fieldWidth; col++)
                 {
                     if (col % 2 == 0)
                     {
@@ -50,7 +50,7 @@
                         battleField[0, col] = " ";
                     }
 
-                    if (col < cols - 1)
+                    if (col < fieldWidth - 1)
                     {
                         battleField[1, col] = "-";
                     }
@@ -68,10 +68,10 @@
                 }
             }
 
-            Methods.FillingTheArray(battleFieldSize, rows, cols, battleField);
-            Methods.PrintArray(rows, cols, battleField);
+            Methods.FillingTheArray(battleFieldSize, fieldHeight, fieldWidth, battleField);
+            Methods.PrintArray(fieldHeight, fieldWidth, battleField);
             int countPlayed = 0;
-            Methods.VremeEIgrachaDaDeistva(battleFieldSize, rows, cols, battleField, countPlayed);
+            Methods.VremeEIgrachaDaDeistva(battleFieldSize, fieldHeight, fieldWidth, battleField, countPlayed);
         }
     }
 }
