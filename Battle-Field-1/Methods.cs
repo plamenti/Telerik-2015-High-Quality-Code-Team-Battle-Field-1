@@ -9,7 +9,7 @@
         private const int MaxBattleFieldSize = 10;
         private const int BorderSize = 2;
 
-        public static void FillingTheArray(int n, int rows, int cols, string[,] workField)
+        public void FillingTheArray(int n, int rows, int cols, string[,] workField)
         {
             int count = 0;
             Random randomNumber = new Random();
@@ -41,7 +41,7 @@
             }
         }
 
-        public static void PrintArray(int rows, int cols, string[,] workField)
+        public void PrintArray(int rows, int cols, string[,] workField)
         {
             for (int i = 0; i < rows; i++)
             {
@@ -54,7 +54,7 @@
             }
         }
 
-        public static void PlayerTurn(int n, int rows, int cols, string[,] workField, int numberOfTurnsPlayed)
+        public void PlayerTurn(int n, int rows, int cols, string[,] workField, int numberOfTurnsPlayed)
         {
             numberOfTurnsPlayed++;
             Console.WriteLine("Please enter coordinates: ");
@@ -127,7 +127,7 @@
             }
         }
 
-        public static void HitOne(int x, int y, int rows, int cols, string[,] workField)
+        public void HitOne(int x, int y, int rows, int cols, string[,] workField)
         {
             workField[x, y] = "X";
             if (x - 1 > 1 && y - 2 > 1)
@@ -151,7 +151,7 @@
             }
         }
 
-        public static void PrasniDvama(int x, int y, int rows, int cols, string[,] workField)
+        public void PrasniDvama(int x, int y, int rows, int cols, string[,] workField)
         {
             workField[x, y] = "X";
             HitOne(x, y, rows, cols, workField);
@@ -176,7 +176,7 @@
             }
         }
 
-        public static void HitThree(int x, int y, int rows, int cols, string[,] workField)
+        public void HitThree(int x, int y, int rows, int cols, string[,] workField)
         {
             PrasniDvama(x, y, rows, cols, workField);
             if (x - 2 > 1)
@@ -211,7 +211,7 @@
             }
         }
 
-        public static void HitFour(int x, int y, int rows, int cols, string[,] workField)
+        public void HitFour(int x, int y, int rows, int cols, string[,] workField)
         {
             HitThree(x, y, rows, cols, workField);
             if (x - 2 > 1 && y - 2 > 1)
@@ -282,7 +282,7 @@
             }
         }
 
-        public static void HitFive(int x, int y, int rows, int cols, string[,] poleZaRabota)
+        public void HitFive(int x, int y, int rows, int cols, string[,] poleZaRabota)
         {
             HitFour(x, y, rows, cols, poleZaRabota);
             if (x - 2 > 1 && y - 4 > 1)
@@ -333,7 +333,7 @@
             }
         }
 
-        public static bool Krai(int rows, int cols, string[,] poleto)
+        public bool Krai(int rows, int cols, string[,] poleto)
         {
             bool край = true;
             for (int i = 2; i < rows; i++)
@@ -409,10 +409,10 @@
                 }
             }
 
-            BattlefieldGameEngine.FillingTheArray(battleFieldSize, fieldHeight, fieldWidth, battleField);
-            BattlefieldGameEngine.PrintArray(fieldHeight, fieldWidth, battleField);
+            this.FillingTheArray(battleFieldSize, fieldHeight, fieldWidth, battleField);
+            this.PrintArray(fieldHeight, fieldWidth, battleField);
             int numberOfTurnsPlayed = 0;
-            BattlefieldGameEngine.PlayerTurn(battleFieldSize, fieldHeight, fieldWidth, battleField, numberOfTurnsPlayed);
+            this.PlayerTurn(battleFieldSize, fieldHeight, fieldWidth, battleField, numberOfTurnsPlayed);
         }
     }
 }
