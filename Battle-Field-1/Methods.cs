@@ -39,7 +39,6 @@
             }
         }
 
-
         public static void PrintArray(int rows, int cols, string[,] workField)
         {
             for (int i = 0; i < rows; i++)
@@ -51,7 +50,6 @@
 
                 Console.WriteLine();
             }
-
         }
 
         public static void VremeEIgrachaDaDeistva(int n, int rows, int cols, string[,] workField, int countPlayed)
@@ -100,6 +98,7 @@
 
 
             int hitCoordinate = Convert.ToInt32(workField[x, y]);
+
             switch (hitCoordinate)
             {
                 case 1: 
@@ -139,20 +138,21 @@
             {
                 workField[x - 1, y - 2] = "X";
             }
+
             if (x - 1 > 1 && y < cols - 2)
             {
                 workField[x - 1, y + 2] = "X";
             }
+
             if (x < rows - 1 && y < cols - 2)
             {
                 workField[x + 1, y + 2] = "X";
             }
+
             if (x < rows - 1 && y - 2 > 1)
             {
                 workField[x + 1, y - 2] = "X";
             }
-
-
         }
 
         public static void PrasniDvama(int x, int y, int rows, int cols, string[,] workField)
@@ -177,7 +177,6 @@
             }
 
         }
-
 
         public static void HitThree(int x, int y, int rows, int cols, string[,] workField)
         {
@@ -219,20 +218,22 @@
             {
                 workField[x - 2, y - 2] = "X";
             }
+
             if (x - 1 > 1 && y - 4 > 1)
             {
                 workField[x - 1, y - 4] = "X";
             }
+
             if (x - 2 > 1 && y < cols - 2)
             {
                 workField[x - 2, y + 2] = "X";
             }
 
-
             if (x < rows - 1 && y - 4 > 1)
             {
                 workField[x + 1, y - 4] = "X";
             }
+
             if (x < rows - 2 && y - 2 > 1)
             {
                 workField[x + 2, y - 2] = "X";
@@ -348,9 +349,6 @@
                 }
             }
             return край;
-
         }
-
-
     }
 }

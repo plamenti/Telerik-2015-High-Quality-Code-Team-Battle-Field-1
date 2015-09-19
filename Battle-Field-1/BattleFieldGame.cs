@@ -70,10 +70,6 @@
             Methods.PrintArray(rows, cols, field);
             int countPlayed = 0;
             Methods.VremeEIgrachaDaDeistva(n, rows, cols, field, countPlayed);
-
         }
-
-
     }
 }
-
