@@ -7,25 +7,28 @@
 
     public class BattleFieldGame
     {
+        private const int MinBattleFieldSize = 1;
+        private const int MaxBattleFieldSize = 10;
+
         public static void Main(string[] argumenti)
         {
             Console.Write("Welcome to \"Battle Field game.\" Enter battle field size: n = ");
-            int n = Convert.ToInt32(Console.ReadLine());
-            while (n < 1 || n > 10)
+            int battleFieldSize = Convert.ToInt32(Console.ReadLine());
+            while (battleFieldSize < MinBattleFieldSize || battleFieldSize > MaxBattleFieldSize)
             {
-                Console.WriteLine("Enter a number between 1 and 10!");
-                n = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Enter a number between {0} and {1}!", MinBattleFieldSize, MaxBattleFieldSize);
+                battleFieldSize = Convert.ToInt32(Console.ReadLine());
             }
 
-            int rows = n + 2;
-            int cols = (n * 2) + 2;
+            int rows = battleFieldSize + 2;
+            int cols = (battleFieldSize * 2) + 2;
 
-            string[,] field = new string[rows, cols];
+            string[,] battleField = new string[rows, cols];
 
-            field[0, 0] = " ";
-            field[0, 1] = " ";
-            field[1, 0] = " ";
-            field[1, 1] = " ";
+            battleField[0, 0] = " ";
+            battleField[0, 1] = " ";
+            battleField[1, 0] = " ";
+            battleField[1, 1] = " ";
 
             for (int row = 2; row < rows; row++)
             {
@@ -35,41 +38,40 @@
                     {
                         if (col == 2)
                         {
-                            field[0, col] = "0";
+                            battleField[0, col] = "0";
                         }
                         else
                         {
-                            field[0, col] = Convert.ToString((col - 2) / 2);
+                            battleField[0, col] = Convert.ToString((col - 2) / 2);
                         }
                     }
                     else
                     {
-                        field[0, col] = " ";
-                    }
-                    if (col < cols - 1)
-                    {
-                        field[1, col] = "-";
+                        battleField[0, col] = " ";
                     }
 
-                    field[row, 0] = Convert.ToString(row - 2);
-                    field[row, 1] = "|";
+                    if (col < cols - 1)
+                    {
+                        battleField[1, col] = "-";
+                    }
+
+                    battleField[row, 0] = Convert.ToString(row - 2);
+                    battleField[row, 1] = "|";
                     if (col % 2 == 0)
                     {
-                        field[row, col] = "-";
+                        battleField[row, col] = "-";
                     }
                     else
                     {
-                        field[row, col] = " ";
+                        battleField[row, col] = " ";
                     }
-
                 }
-
             }
 
-            Methods.FillingTheArray(n, rows, cols, field);
-            Methods.PrintArray(rows, cols, field);
+            Methods.FillingTheArray(battleFieldSize, rows, cols, battleField);
+            Methods.PrintArray(rows, cols, battleField);
             int countPlayed = 0;
-            Methods.VremeEIgrachaDaDeistva(n, rows, cols, field, countPlayed);
+            Methods.VremeEIgrachaDaDeistva(battleFieldSize, rows, cols, battleField, countPlayed);
         }
     }
 }
