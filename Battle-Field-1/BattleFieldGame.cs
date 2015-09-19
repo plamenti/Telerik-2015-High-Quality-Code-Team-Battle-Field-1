@@ -6,8 +6,10 @@ using System.Text;
 namespace BattleField
 {
     class BattleFieldGame
-    {   static void Main(string[] argumenti)
-        {   Console.Write("Welcome to \"Battle Field game.\" Enter battle field size: n = ");         
+    {
+        static void Main(string[] argumenti)
+        {
+            Console.Write("Welcome to \"Battle Field game.\" Enter battle field size: n = ");
             int n = Convert.ToInt32(Console.ReadLine());
             while (n < 1 || n > 10)
             {
@@ -18,8 +20,8 @@ namespace BattleField
             }
 
             int rows = n + 2;
-            int cols = n*2 + 2;
-         
+            int cols = n * 2 + 2;
+
             String[,] field = new String[rows, cols];
 
             field[0, 0] = " ";
@@ -31,9 +33,8 @@ namespace BattleField
             {
 
                 for (int col = 2; col < cols; col++)
-
                 {
-                    
+
                     if (col % 2 == 0)
                     {
                         if (col == 2)
@@ -42,7 +43,7 @@ namespace BattleField
                         }
                         else
                         {
-                            field[0, col] = Convert.ToString((col - 2)/2);
+                            field[0, col] = Convert.ToString((col - 2) / 2);
                         }
                     }
                     else
@@ -64,7 +65,7 @@ namespace BattleField
                     {
                         field[row, col] = " ";
                     }
-                      
+
                 }
 
             }
@@ -73,10 +74,10 @@ namespace BattleField
             Methods.PrintArray(rows, cols, field);
             int countPlayed = 0;
             Methods.vremeEIgrachaDaDeistva(n, rows, cols, field, countPlayed);
-           
+
         }
 
 
-        }
     }
+}
 
