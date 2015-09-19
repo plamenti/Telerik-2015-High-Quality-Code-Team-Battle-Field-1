@@ -6,7 +6,8 @@ using System.Text;
 namespace BattleField
 {
     class BattleFieldGame
-    {   static void Main(string[] argumenti)
+    {   
+        static void Main(string[] argumenti)
         {   Console.Write("Welcome to \"Battle Field game.\" Enter battle field size: n = ");         
             int n = Convert.ToInt32(Console.ReadLine());
             while (n < 1 || n > 10)
