@@ -9,27 +9,27 @@
         private const int MaxBattleFieldSize = 10;
         private const int BorderSize = 2;
 
-        public void FillingTheArray(int n, int rows, int cols, string[,] workField)
+        public void FillingTheArray(int gameFieldSize, int rows, int cols, string[,] workField)
         {
             int count = 0;
             Random randomNumber = new Random();
             int randomPlaceI;
             int randomPlaceJ;
-            int minPercent = Convert.ToInt32(0.15 * (n * n));
-            int maxPercent = Convert.ToInt32(0.30 * (n * n));
+            int minPercent = Convert.ToInt32(0.15 * (gameFieldSize * gameFieldSize));
+            int maxPercent = Convert.ToInt32(0.30 * (gameFieldSize * gameFieldSize));
             int countMines = randomNumber.Next(minPercent, maxPercent);
 
             while (count <= countMines)
             {
-                randomPlaceI = randomNumber.Next(0, n);
-                randomPlaceJ = randomNumber.Next(0, n);
+                randomPlaceI = randomNumber.Next(0, gameFieldSize);
+                randomPlaceJ = randomNumber.Next(0, gameFieldSize);
                 randomPlaceI += 2;
                 randomPlaceJ = (2 * randomPlaceJ) + 2;
 
                 while (workField[randomPlaceI, randomPlaceJ] != " " && workField[randomPlaceI, randomPlaceJ] != "-")
                 {
-                    randomPlaceI = randomNumber.Next(0, n);
-                    randomPlaceJ = randomNumber.Next(0, n);
+                    randomPlaceI = randomNumber.Next(0, gameFieldSize);
+                    randomPlaceJ = randomNumber.Next(0, gameFieldSize);
                     randomPlaceI += 2;
                     randomPlaceJ = (2 * randomPlaceJ) + 2;
                 }
