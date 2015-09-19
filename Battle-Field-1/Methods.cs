@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace BattleField
+﻿namespace BattleField
 {
-    class Methods
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+
+    public class Methods
     {
         public static void FillingTheArray(int n, int rows, int cols, string[,] workField)
         {
@@ -19,20 +19,17 @@ namespace BattleField
 
             while (count <= countMines)
             {
-
                 randomPlaceI = randomNumber.Next(0, n);
                 randomPlaceJ = randomNumber.Next(0, n);
                 randomPlaceI += 2;
-                randomPlaceJ = 2 * randomPlaceJ + 2;
+                randomPlaceJ = (2 * randomPlaceJ) + 2;
 
                 while (workField[randomPlaceI, randomPlaceJ] != " " && workField[randomPlaceI, randomPlaceJ] != "-")
                 {
-
                     randomPlaceI = randomNumber.Next(0, n);
                     randomPlaceJ = randomNumber.Next(0, n);
                     randomPlaceI += 2;
-                    randomPlaceJ = 2 * randomPlaceJ + 2;
-
+                    randomPlaceJ = (2 * randomPlaceJ) + 2;
                 }
 
                 string randomDigit = Convert.ToString(randomNumber.Next(1, 6));
@@ -45,16 +42,14 @@ namespace BattleField
 
         public static void PrintArray(int rows, int cols, string[,] workField)
         {
-
             for (int i = 0; i < rows; i++)
             {
-
                 for (int j = 0; j < cols; j++)
-
-
+                {
                     Console.Write(workField[i, j]);
-                Console.WriteLine();
+                }
 
+                Console.WriteLine();
             }
 
         }
@@ -78,7 +73,7 @@ namespace BattleField
             }
 
             x += 2;
-            y = 2 * y + 2;
+            y = (2 * y) + 2;
 
             while (workField[x, y] == "-" || workField[x, y] == "X")
             {
@@ -99,7 +94,7 @@ namespace BattleField
                 }
 
                 x += 2;
-                y = 2 * y + 2;
+                y = (2 * y) + 2;
 
             }
 
@@ -127,7 +122,7 @@ namespace BattleField
             PrintArray(rows, cols, workField);
             if (!Krai(rows, cols, workField))
             {
-                vremeEIgrachaDaDeistva(n, rows, cols, workField, countPlayed);
+                VremeEIgrachaDaDeistva(n, rows, cols, workField, countPlayed);
             }
             else
             {
@@ -275,7 +270,6 @@ namespace BattleField
             }
             else
             {
-
                 if (x - 1 > 1 && y < cols - 3)
                 {
                     workField[x - 1, y + 4] = "X";

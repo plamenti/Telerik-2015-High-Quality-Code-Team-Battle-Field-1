@@ -5,22 +5,20 @@
     using System.Linq;
     using System.Text;
 
-    class BattleFieldGame
+    public class BattleFieldGame
     {
-        static void Main(string[] argumenti)
+        public static void Main(string[] argumenti)
         {
             Console.Write("Welcome to \"Battle Field game.\" Enter battle field size: n = ");
             int n = Convert.ToInt32(Console.ReadLine());
             while (n < 1 || n > 10)
             {
-
                 Console.WriteLine("Enter a number between 1 and 10!");
                 n = Convert.ToInt32(Console.ReadLine());
-
             }
 
             int rows = n + 2;
-            int cols = n * 2 + 2;
+            int cols = (n * 2) + 2;
 
             string[,] field = new string[rows, cols];
 
@@ -31,10 +29,8 @@
 
             for (int row = 2; row < rows; row++)
             {
-
                 for (int col = 2; col < cols; col++)
                 {
-
                     if (col % 2 == 0)
                     {
                         if (col == 2)
@@ -73,7 +69,7 @@
             Methods.FillingTheArray(n, rows, cols, field);
             Methods.PrintArray(rows, cols, field);
             int countPlayed = 0;
-            Methods.vremeEIgrachaDaDeistva(n, rows, cols, field, countPlayed);
+            Methods.VremeEIgrachaDaDeistva(n, rows, cols, field, countPlayed);
 
         }
 
