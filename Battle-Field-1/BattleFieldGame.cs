@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace BattleField
+﻿namespace BattleField
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+
     class BattleFieldGame
     {
         static void Main(string[] argumenti)
@@ -22,7 +22,7 @@ namespace BattleField
             int rows = n + 2;
             int cols = n * 2 + 2;
 
-            String[,] field = new String[rows, cols];
+            string[,] field = new string[rows, cols];
 
             field[0, 0] = " ";
             field[0, 1] = " ";
