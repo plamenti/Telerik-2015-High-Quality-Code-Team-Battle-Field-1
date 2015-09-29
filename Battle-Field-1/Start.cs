@@ -1,4 +1,4 @@
-﻿namespace BattleField
+﻿namespace BattleFieldGame
 {
     using System;
 
