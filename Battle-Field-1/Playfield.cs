@@ -24,7 +24,7 @@
             {
                 if (Validator.IsPositiveNumber(value))
                 {
-                    throw new ArgumentOutOfRangeException("Size cannot be negative number");
+                    throw new ArgumentOutOfRangeException(GlobalConstants.NegativeNumberMessage("Size"));
                 }
 
                 this.size = value;

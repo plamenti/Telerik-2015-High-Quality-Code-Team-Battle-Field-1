@@ -24,7 +24,7 @@
             {
                 if (Validator.IsPositiveNumber(value))
                 {
-                    throw new ArgumentOutOfRangeException("Row cannot be negative number");
+                    throw new ArgumentOutOfRangeException(GlobalConstants.NegativeNumberMessage("Row"));
                 }
 
                 this.row = value;
@@ -42,7 +42,7 @@
             {
                 if (Validator.IsPositiveNumber(value))
                 {
-                    throw new ArgumentOutOfRangeException("Col cannot be negative number");
+                    throw new ArgumentOutOfRangeException(GlobalConstants.NegativeNumberMessage("Col"));
                 }
 
                 this.col = value;
