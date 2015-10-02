@@ -4,6 +4,7 @@
 
     public class GameEngine
     {
+        // Extract constants in GlobalConstants
         private const int MinBattleFieldSize = 1;
         private const int MaxBattleFieldSize = 10;
         private const int BorderSize = 2;

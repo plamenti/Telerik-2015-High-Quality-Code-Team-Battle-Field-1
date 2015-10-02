@@ -1,8 +1,9 @@
 ﻿namespace BattleFieldGame
 {
     using System;
+    using BattleFieldGame.Contracts;
 
-    public class Position
+    public class Position : IPosition
     {
         private int row;
         private int col;

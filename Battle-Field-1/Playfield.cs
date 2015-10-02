@@ -1,6 +1,7 @@
 ﻿namespace BattleFieldGame
 {
     using System;
+    using BattleFieldGame.Contracts;
 
     public class Playfield
     {
@@ -10,7 +11,7 @@
         public Playfield(int size)
         {
             this.grid = new char[size, size];
-            this.size = size;
+            this.Size = size;
         }
 
         public int Size 
@@ -22,6 +23,7 @@
 
             private set
             {
+                // TODO: add validation for min and max field size!
                 if (Validator.IsPositiveNumber(value))
                 {
                     throw new ArgumentOutOfRangeException(GlobalConstants.NegativeNumberMessage("Size"));
@@ -29,6 +31,16 @@
 
                 this.size = value;
             }
+        }
+
+        public char GetCell(IPosition position)
+        {
+            return this.grid[position.Row, position.Col];
+        }
+
+        public void SetCell(IPosition position, char symbol)
+        {
+            this.grid[position.Row, position.Col] = symbol;
         }
     }
 }

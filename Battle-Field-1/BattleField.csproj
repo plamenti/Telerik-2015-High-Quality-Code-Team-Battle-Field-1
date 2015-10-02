@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IPosition.cs" />
     <Compile Include="GlobalConstants.cs" />
     <Compile Include="Playfield.cs" />
     <Compile Include="Position.cs" />
