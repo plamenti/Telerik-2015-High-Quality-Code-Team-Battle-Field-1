@@ -7,7 +7,7 @@
         private const int MinBattleFieldSize = 1;
         private const int MaxBattleFieldSize = 10;
         private const int BorderSize = 2;
-        private RandomNumberGenerator randomNumber;
+        private RandomNumberGenerator randomNumber = new RandomNumberGenerator();
 
         public void FillingTheArray(int gameFieldSize, int rows, int cols, string[,] workField)
         {
