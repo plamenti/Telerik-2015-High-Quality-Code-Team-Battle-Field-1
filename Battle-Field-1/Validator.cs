@@ -11,5 +11,15 @@
 
             return true;
         }
+
+        public static bool IsNumberBetween(int min, int max, int number)
+        {
+            if (number < min || number > max)
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }

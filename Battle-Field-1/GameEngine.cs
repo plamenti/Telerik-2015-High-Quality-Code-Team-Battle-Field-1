@@ -4,10 +4,6 @@
 
     public class GameEngine
     {
-        // Extract constants in GlobalConstants
-        private const int MinBattleFieldSize = 1;
-        private const int MaxBattleFieldSize = 10;
-        private const int BorderSize = 2;
         private RandomNumberGenerator randomNumber = new RandomNumberGenerator();
 
         public void FillingTheArray(int gameFieldSize, int rows, int cols, string[,] workField)
@@ -353,14 +349,14 @@
         {
             Console.Write("Welcome to \"Battle Field game.\" Enter battle field size: n = ");
             int battleFieldSize = Convert.ToInt32(Console.ReadLine());
-            while (battleFieldSize < MinBattleFieldSize || battleFieldSize > MaxBattleFieldSize)
+            while (battleFieldSize < GlobalConstants.MinBattleFieldSize || battleFieldSize > GlobalConstants.MaxBattleFieldSize)
             {
-                Console.WriteLine("Enter a number between {0} and {1}!", MinBattleFieldSize, MaxBattleFieldSize);
+                Console.WriteLine("Enter a number between {0} and {1}!", GlobalConstants.MinBattleFieldSize, GlobalConstants.MaxBattleFieldSize);
                 battleFieldSize = Convert.ToInt32(Console.ReadLine());
             }
 
-            int fieldHeight = battleFieldSize + BorderSize;
-            int fieldWidth = (battleFieldSize * 2) + BorderSize;
+            int fieldHeight = battleFieldSize + GlobalConstants.BorderSize;
+            int fieldWidth = (battleFieldSize * 2) + GlobalConstants.BorderSize;
 
             string[,] battleField = new string[fieldHeight, fieldWidth];
 

@@ -23,10 +23,14 @@
 
             private set
             {
-                // TODO: add validation for min and max field size!
                 if (Validator.IsPositiveNumber(value))
                 {
                     throw new ArgumentOutOfRangeException(GlobalConstants.NegativeNumberMessage("Size"));
+                }
+
+                if (Validator.IsNumberBetween(GlobalConstants.MinBattleFieldSize, GlobalConstants.MaxBattleFieldSize, value))
+                {
+                    throw new ArgumentOutOfRangeException(GlobalConstants.NumberOutOfRange("Size"));
                 }
 
                 this.size = value;
