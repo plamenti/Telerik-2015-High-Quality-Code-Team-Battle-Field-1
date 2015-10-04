@@ -1,5 +1,6 @@
 From method Run() removed unneend code:
 In method Run
+
 Before: …
                
                     if (col % 2 == 0)
@@ -15,6 +16,7 @@ Before: …
                     }
 …
 After:…
+
                     if (col % 2 == 0)
                     {
                         battleField[0, col] = Convert.ToString((col - 2) / 2);
