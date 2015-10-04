@@ -4,7 +4,10 @@
     {
         public static void Main()
         {
-            var game = new GameEngine();
+            var randomNumberGenerator = new RandomNumberGenerator();
+            var reader = new ConsoleReader();
+            var renderer = new ConsoleRenderer();
+            var game = new GameEngine(randomNumberGenerator, reader, renderer);
             game.Run();
         }
     }

@@ -1,51 +1,19 @@
 ﻿namespace BattleFieldGame
 {
     using System;
+    using BattleFieldGame.Contracts;
 
     public class GameEngine
     {
-        private RandomNumberGenerator randomNumber = new RandomNumberGenerator();
+        private IRandomNumberGenerator randomNumberGenerator;
+        private IReader reader;
+        private IRenderer renderer;
 
-        public void FillingTheArray(int gameFieldSize, int rows, int cols, string[,] workField)
+        public GameEngine(IRandomNumberGenerator randomNumberGenerator, IReader reader, IRenderer renderer)
         {
-            int randomPlaceI;
-            int randomPlaceJ;
-            int minPercent = Convert.ToInt32(0.15 * (gameFieldSize * gameFieldSize));
-            int maxPercent = Convert.ToInt32(0.30 * (gameFieldSize * gameFieldSize));
-            int countMines = this.randomNumber.Next(minPercent, maxPercent);
-
-            for (int i = 0; i <= countMines; i++)
-            {
-                randomPlaceI = this.randomNumber.Next(0, gameFieldSize);
-                randomPlaceJ = this.randomNumber.Next(0, gameFieldSize);
-                randomPlaceI += 2;
-                randomPlaceJ = (2 * randomPlaceJ) + 2;
-
-                while ((workField[randomPlaceI, randomPlaceJ] != " ") && (workField[randomPlaceI, randomPlaceJ] != "-"))
-                {
-                    randomPlaceI = this.randomNumber.Next(0, gameFieldSize);
-                    randomPlaceJ = this.randomNumber.Next(0, gameFieldSize);
-                    randomPlaceI += 2;
-                    randomPlaceJ = (2 * randomPlaceJ) + 2;
-                }
-
-                string randomDigit = Convert.ToString(this.randomNumber.Next(1, 6));
-                workField[randomPlaceI, randomPlaceJ] = randomDigit;
-                workField[randomPlaceI, randomPlaceJ + 1] = " ";
-            }
-        }
-
-        public void PrintArray(int rows, int cols, string[,] workField)
-        {
-            for (int i = 0; i < rows; i++)
-            {
-                for (int j = 0; j < cols; j++)
-                {
-                    Console.Write(workField[i, j]);
-                }
-
-                Console.WriteLine();
-            }
+            this.randomNumberGenerator = randomNumberGenerator;
+            this.reader = reader;
+            this.renderer = renderer;
         }
 
         public void PlayerTurn(int n, int rows, int cols, string[,] workField, int numberOfTurnsPlayed)
@@ -114,7 +82,7 @@
                     break;
             }
 
-            this.PrintArray(rows, cols, workField);
+            //this.PrintArray(rows, cols, workField);
             if (!this.HasGameEnded(rows, cols, workField))
             {
                 this.PlayerTurn(n, rows, cols, workField, numberOfTurnsPlayed);
@@ -351,64 +319,21 @@
 
         public void Run()
         {
-            //var playfield = new Playfield(10, this.randomNumber);
+            Console.Write(GlobalConstants.WelcomeMessage);
 
-            //var renderer = new ConsoleRenderer();
-            //renderer.RenderPlayfield(playfield);
+            int playfieldSize = this.reader.ReadSingleNumber();
 
-            Console.Write("Welcome to \"Battle Field game.\" Enter battle field size: n = ");
-            int battleFieldSize = Convert.ToInt32(Console.ReadLine());
-            while (battleFieldSize < GlobalConstants.MinBattleFieldSize || battleFieldSize > GlobalConstants.MaxBattleFieldSize)
+            while (playfieldSize < GlobalConstants.MinBattleFieldSize || playfieldSize > GlobalConstants.MaxBattleFieldSize)
             {
-                Console.WriteLine("Enter a number between {0} and {1}!", GlobalConstants.MinBattleFieldSize, GlobalConstants.MaxBattleFieldSize);
-                battleFieldSize = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine(GlobalConstants.NumberBetweenMessage(GlobalConstants.MinBattleFieldSize, GlobalConstants.MaxBattleFieldSize));
+                playfieldSize = this.reader.ReadSingleNumber();
             }
 
-            int fieldHeight = battleFieldSize + GlobalConstants.BorderSize;
-            int fieldWidth = (battleFieldSize * 2) + GlobalConstants.BorderSize;
+            var playfield = new Playfield(playfieldSize, this.randomNumberGenerator);
+            renderer.RenderPlayfield(playfield);
 
-            string[,] battleField = new string[fieldHeight, fieldWidth];
-
-            battleField[0, 0] = " ";
-            battleField[0, 1] = " ";
-            battleField[1, 0] = " ";
-            battleField[1, 1] = " ";
-
-            for (int row = 2; row < fieldHeight; row++)
-            {
-                for (int col = 2; col < fieldWidth; col++)
-                {
-                    if (col % 2 == 0)
-                    {
-                        battleField[0, col] = Convert.ToString((col - 2) / 2);
-                    }
-                    else
-                    {
-                        battleField[0, col] = " ";
-                    }
-
-                    if (col < fieldWidth - 1)
-                    {
-                        battleField[1, col] = "-";
-                    }
-
-                    battleField[row, 0] = Convert.ToString(row - 2);
-                    battleField[row, 1] = "|";
-                    if (col % 2 == 0)
-                    {
-                        battleField[row, col] = "-";
-                    }
-                    else
-                    {
-                        battleField[row, col] = " ";
-                    }
-                }
-            }
-
-            this.FillingTheArray(battleFieldSize, fieldHeight, fieldWidth, battleField);
-            this.PrintArray(fieldHeight, fieldWidth, battleField);
             int numberOfTurnsPlayed = 0;
-            this.PlayerTurn(battleFieldSize, fieldHeight, fieldWidth, battleField, numberOfTurnsPlayed);
+            //this.PlayerTurn(playfieldFieldSize, fieldHeight, fieldWidth, battleField, numberOfTurnsPlayed);
         }
     }
 }

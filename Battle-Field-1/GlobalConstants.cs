@@ -10,6 +10,7 @@
 
         public const string EnterCoordinates = "Please enter coordinates/row, col/ stared from zero(0), separated by whitespace: ";
         public const string InvalidMove = "Invalid move!";
+        public const string WelcomeMessage = "Welcome to \"Battle Field game.\" Enter battle field size: n = ";
 
         private const string NegativeMessage = " cannot be negative number";
         private const string OutOfRangeMessage = " is out of range";
@@ -22,6 +23,11 @@
         public static string NumberOutOfRange(string propertyName)
         {
             return propertyName + OutOfRangeMessage;
+        }
+
+        public static string NumberBetweenMessage(int min, int max)
+        {
+            return string.Format("Enter a number between {0} and {1}!", min, max);
         }
     }
 }

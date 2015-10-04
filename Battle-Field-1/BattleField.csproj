@@ -43,9 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsoleReader.cs" />
     <Compile Include="Contracts\IPlayfield.cs" />
     <Compile Include="Contracts\IPosition.cs" />
     <Compile Include="Contracts\IRandomNumberGenerator.cs" />
+    <Compile Include="Contracts\IReader.cs" />
     <Compile Include="Contracts\IRenderer.cs" />
     <Compile Include="GlobalConstants.cs" />
     <Compile Include="Playfield.cs" />
