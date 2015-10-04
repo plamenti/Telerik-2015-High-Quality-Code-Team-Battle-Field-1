@@ -3,5 +3,7 @@
     public interface IReader
     {
         int ReadSingleNumber();
+
+        int[] ReadCoordinates();
     }
 }

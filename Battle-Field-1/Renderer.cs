@@ -43,7 +43,7 @@
 
                         if (col > 1)
                         {
-                            this.RenderSingleSymbol("-");
+                            this.RenderSingleSymbol("_");
                         }
                     }
 
