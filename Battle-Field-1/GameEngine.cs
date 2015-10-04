@@ -96,15 +96,19 @@
                 case 1:
                     this.HitOne(x, y, rows, cols, workField);
                     break;
+
                 case 2:
                     this.HitTwo(x, y, rows, cols, workField);
                     break;
+
                 case 3:
                     this.HitThree(x, y, rows, cols, workField);
                     break;
+
                 case 4:
                     this.HitFour(x, y, rows, cols, workField);
                     break;
+
                 case 5:
                     this.HitFive(x, y, rows, cols, workField);
                     break;
@@ -371,14 +375,7 @@
                 {
                     if (col % 2 == 0)
                     {
-                        if (col == 2)
-                        {
-                            battleField[0, col] = "0";
-                        }
-                        else
-                        {
-                            battleField[0, col] = Convert.ToString((col - 2) / 2);
-                        }
+                        battleField[0, col] = Convert.ToString((col - 2) / 2);
                     }
                     else
                     {
