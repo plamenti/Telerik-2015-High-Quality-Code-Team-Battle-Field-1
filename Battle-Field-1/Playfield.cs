@@ -6,6 +6,8 @@
 
     public class Playfield
     {
+        private const int MaxMineNumber = 5;
+
         private string[,] grid;
         private int size;
 
@@ -70,6 +72,12 @@
             foreach (var mine in mines)
             {
                 int mineNumber = rng.Next(1, this.size);
+
+                if (mineNumber > MaxMineNumber)
+                {
+                    mineNumber = MaxMineNumber;
+                }
+
                 this.SetCell(mine, mineNumber.ToString());
             }
 
