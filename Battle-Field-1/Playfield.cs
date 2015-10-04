@@ -11,11 +11,10 @@
         private string[,] grid;
         private int size;
 
-        public Playfield(int size, IRandomNumberGenerator rng)
+        public Playfield(int size)
         {
             this.Size = size;
             this.grid = new string[size, size];
-            this.FillPlayfield(rng);
         }
 
         public int Size
@@ -61,7 +60,7 @@
             this.grid[row, col] = symbol;
         }
 
-        private void FillPlayfield(IRandomNumberGenerator rng)
+        public void FillPlayfield(IRandomNumberGenerator rng)
         {
             int minPercent = Convert.ToInt32(GlobalConstants.MinPercent * (this.size * this.size));
             int maxPercent = Convert.ToInt32(GlobalConstants.MaxPercent * (this.size * this.size));

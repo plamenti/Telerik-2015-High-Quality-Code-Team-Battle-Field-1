@@ -8,14 +8,16 @@
         private IRandomNumberGenerator randomNumberGenerator;
         private IReader reader;
         private IRenderer renderer;
+        private IPlayfield playfield;
         private int numberOfTurnsPlayed = 0;
         private bool isGameOver = false;
 
-        public GameEngine(IRandomNumberGenerator randomNumberGenerator, IReader reader, IRenderer renderer)
+        public GameEngine(IRandomNumberGenerator randomNumberGenerator, IReader reader, IRenderer renderer, IPlayfield playfield)
         {
             this.randomNumberGenerator = randomNumberGenerator;
             this.reader = reader;
             this.renderer = renderer;
+            this.playfield = playfield;
         }
         
         //public void HitOne(int x, int y, int rows, int cols, string[,] workField)
@@ -254,13 +256,14 @@
                 playfieldSize = this.reader.ReadSingleNumber();
             }
 
-            var playfield = new Playfield(playfieldSize, this.randomNumberGenerator);
-            this.renderer.RenderPlayfield(playfield);
+            this.playfield = new Playfield(playfieldSize);
+            this.playfield.FillPlayfield(this.randomNumberGenerator);
+            this.renderer.RenderPlayfield(this.playfield);
 
             while (!this.isGameOver)
-	        {
-                this.PlayTurn(playfield);	         
-	        }
+            {
+                this.PlayTurn();
+            }
         }
 
         private string GetSymbolFromField(IPlayfield playfield)
@@ -286,14 +289,14 @@
             throw new NotImplementedException();
         }
 
-        private void PlayTurn(IPlayfield playfield)
+        private void PlayTurn()
         {
             this.numberOfTurnsPlayed++;
-            string symbol = this.GetSymbolFromField(playfield);
+            string symbol = this.GetSymbolFromField(this.playfield);
 
             while (symbol == "-" || symbol == "X")
             {
-                symbol = this.GetSymbolFromField(playfield);
+                symbol = this.GetSymbolFromField(this.playfield);
             }
 
             this.Hit(symbol);

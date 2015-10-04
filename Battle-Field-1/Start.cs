@@ -7,7 +7,8 @@
             var randomNumberGenerator = new RandomNumberGenerator();
             var reader = new ConsoleReader();
             var renderer = new ConsoleRenderer();
-            var game = new GameEngine(randomNumberGenerator, reader, renderer);
+            var playfield = new Playfield(5);
+            var game = new GameEngine(randomNumberGenerator, reader, renderer, playfield);
             game.Run();
         }
     }

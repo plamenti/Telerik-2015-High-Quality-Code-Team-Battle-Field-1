@@ -11,5 +11,7 @@
         void SetCell(IPosition position, string symbol);
 
         void SetCell(int row, int col, string symbol);
+
+        void FillPlayfield(IRandomNumberGenerator rng);
     }
 }
