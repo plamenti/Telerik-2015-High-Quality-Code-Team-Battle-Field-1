@@ -1,4 +1,4 @@
-From method Run() removed unneend code:
+From method Run() removed unneenеd code:
 
 Before: …
                
