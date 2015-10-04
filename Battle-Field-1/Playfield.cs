@@ -10,11 +10,11 @@
 
         public Playfield(int size)
         {
-            this.grid = new char[size, size];
             this.Size = size;
+            this.grid = new char[size, size];
         }
 
-        public int Size 
+        public int Size
         {
             get
             {
