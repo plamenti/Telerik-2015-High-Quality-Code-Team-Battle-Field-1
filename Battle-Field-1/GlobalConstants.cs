@@ -5,7 +5,10 @@
         public const int MinBattleFieldSize = 1;
         public const int MaxBattleFieldSize = 10;
         public const int BorderSize = 2;
-        public const string EnterCoordinates = "Please enter coordinates/row, col/, separated by whitespace: ";
+        public const double MinPercent = 0.15;
+        public const double MaxPercent = 0.30;
+
+        public const string EnterCoordinates = "Please enter coordinates/row, col/ stared from zero(0), separated by whitespace: ";
         public const string InvalidMove = "Invalid move!";
 
         private const string NegativeMessage = " cannot be negative number";

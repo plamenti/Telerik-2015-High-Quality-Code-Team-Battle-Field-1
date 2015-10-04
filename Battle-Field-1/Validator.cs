@@ -2,14 +2,24 @@
 {
     public static class Validator
     {
-        public static bool IsPositiveNumber(int number)
+        public static bool IsNegativeNumber(int number)
+        {
+            if (number < 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public static bool IsNegativeOrZeroNumber(int number)
         {
             if (number <= 0)
             {
-                return false;
+                return true;
             }
 
-            return true;
+            return false;
         }
 
         public static bool IsNumberBetween(int min, int max, int number)

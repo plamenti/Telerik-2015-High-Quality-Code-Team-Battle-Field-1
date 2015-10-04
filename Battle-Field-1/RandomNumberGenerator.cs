@@ -1,8 +1,9 @@
 ﻿namespace BattleFieldGame
 {
     using System;
+    using BattleFieldGame.Contracts;
 
-    public class RandomNumberGenerator
+    public class RandomNumberGenerator : IRandomNumberGenerator
     {
         private Random random = new Random();
 
