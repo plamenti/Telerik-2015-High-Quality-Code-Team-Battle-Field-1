@@ -1,38 +1,35 @@
-﻿namespace BattleField
+﻿namespace BattleFieldGame
 {
     using System;
 
     public class GameEngine
     {
-        private const int MinBattleFieldSize = 1;
-        private const int MaxBattleFieldSize = 10;
-        private const int BorderSize = 2;
+        private RandomNumberGenerator randomNumber = new RandomNumberGenerator();
 
         public void FillingTheArray(int gameFieldSize, int rows, int cols, string[,] workField)
         {
-            Random randomNumber = new Random();
             int randomPlaceI;
             int randomPlaceJ;
             int minPercent = Convert.ToInt32(0.15 * (gameFieldSize * gameFieldSize));
             int maxPercent = Convert.ToInt32(0.30 * (gameFieldSize * gameFieldSize));
-            int countMines = randomNumber.Next(minPercent, maxPercent);
+            int countMines = this.randomNumber.Next(minPercent, maxPercent);
 
             for (int i = 0; i <= countMines; i++)
             {
-                randomPlaceI = randomNumber.Next(0, gameFieldSize);
-                randomPlaceJ = randomNumber.Next(0, gameFieldSize);
+                randomPlaceI = this.randomNumber.Next(0, gameFieldSize);
+                randomPlaceJ = this.randomNumber.Next(0, gameFieldSize);
                 randomPlaceI += 2;
                 randomPlaceJ = (2 * randomPlaceJ) + 2;
 
                 while ((workField[randomPlaceI, randomPlaceJ] != " ") && (workField[randomPlaceI, randomPlaceJ] != "-"))
                 {
-                    randomPlaceI = randomNumber.Next(0, gameFieldSize);
-                    randomPlaceJ = randomNumber.Next(0, gameFieldSize);
+                    randomPlaceI = this.randomNumber.Next(0, gameFieldSize);
+                    randomPlaceJ = this.randomNumber.Next(0, gameFieldSize);
                     randomPlaceI += 2;
                     randomPlaceJ = (2 * randomPlaceJ) + 2;
                 }
 
-                string randomDigit = Convert.ToString(randomNumber.Next(1, 6));
+                string randomDigit = Convert.ToString(this.randomNumber.Next(1, 6));
                 workField[randomPlaceI, randomPlaceJ] = randomDigit;
                 workField[randomPlaceI, randomPlaceJ + 1] = " ";
             }
@@ -96,20 +93,20 @@
 
             switch (hitCoordinate)
             {
-                case 1: 
-                    this.HitOne(x, y, rows, cols, workField); 
+                case 1:
+                    this.HitOne(x, y, rows, cols, workField);
                     break;
-                case 2: 
-                    this.HitTwo(x, y, rows, cols, workField); 
+                case 2:
+                    this.HitTwo(x, y, rows, cols, workField);
                     break;
-                case 3: 
-                    this.HitThree(x, y, rows, cols, workField); 
+                case 3:
+                    this.HitThree(x, y, rows, cols, workField);
                     break;
-                case 4: 
+                case 4:
                     this.HitFour(x, y, rows, cols, workField);
                     break;
-                case 5: 
-                    this.HitFive(x, y, rows, cols, workField); 
+                case 5:
+                    this.HitFive(x, y, rows, cols, workField);
                     break;
             }
 
@@ -352,14 +349,14 @@
         {
             Console.Write("Welcome to \"Battle Field game.\" Enter battle field size: n = ");
             int battleFieldSize = Convert.ToInt32(Console.ReadLine());
-            while (battleFieldSize < MinBattleFieldSize || battleFieldSize > MaxBattleFieldSize)
+            while (battleFieldSize < GlobalConstants.MinBattleFieldSize || battleFieldSize > GlobalConstants.MaxBattleFieldSize)
             {
-                Console.WriteLine("Enter a number between {0} and {1}!", MinBattleFieldSize, MaxBattleFieldSize);
+                Console.WriteLine("Enter a number between {0} and {1}!", GlobalConstants.MinBattleFieldSize, GlobalConstants.MaxBattleFieldSize);
                 battleFieldSize = Convert.ToInt32(Console.ReadLine());
             }
 
-            int fieldHeight = battleFieldSize + BorderSize;
-            int fieldWidth = (battleFieldSize * 2) + BorderSize;
+            int fieldHeight = battleFieldSize + GlobalConstants.BorderSize;
+            int fieldWidth = (battleFieldSize * 2) + GlobalConstants.BorderSize;
 
             string[,] battleField = new string[fieldHeight, fieldWidth];
 
