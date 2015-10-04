@@ -51,15 +51,15 @@
         public void PlayerTurn(int n, int rows, int cols, string[,] workField, int numberOfTurnsPlayed)
         {
             numberOfTurnsPlayed++;
-            Console.WriteLine("Please enter coordinates, separated by whitespace: ");
+            Console.WriteLine(GlobalConstants.EnterCoordinates);
             string xy = Console.ReadLine();
             int x = int.Parse(xy.Substring(0, 1));
             int y = int.Parse(xy.Substring(2, 1));
 
             while ((x < 0 || x > (n - 1)) && (y < 0 || y > (n - 1)))
             {
-                Console.WriteLine("Invalid move!");
-                Console.WriteLine("Please enter coordinates, separated by whitespace: ");
+                Console.WriteLine(GlobalConstants.InvalidMove);
+                Console.WriteLine(GlobalConstants.EnterCoordinates);
                 xy = Console.ReadLine();
                 x = int.Parse(xy.Substring(0, 1));
                 y = int.Parse(xy.Substring(2, 1));
@@ -70,16 +70,16 @@
 
             while (workField[x, y] == "-" || workField[x, y] == "X")
             {
-                Console.WriteLine("Invalid move! ");
-                Console.WriteLine("Please enter coordinates, separated by whitespace: ");
+                Console.WriteLine(GlobalConstants.InvalidMove);
+                Console.WriteLine(GlobalConstants.EnterCoordinates);
                 xy = Console.ReadLine();
                 x = int.Parse(xy.Substring(0, 1));
                 y = int.Parse(xy.Substring(2, 1));
 
                 while ((x < 0 || x > (n - 1)) && (y < 0 || y > (n - 1)))
                 {
-                    Console.WriteLine("Invalid move !");
-                    Console.WriteLine("Please enter coordinates, separated by whitespace: ");
+                    Console.WriteLine(GlobalConstants.InvalidMove);
+                    Console.WriteLine(GlobalConstants.EnterCoordinates);
                     xy = Console.ReadLine();
                     x = int.Parse(xy.Substring(0, 1));
                     y = int.Parse(xy.Substring(2, 1));
@@ -351,6 +351,11 @@
 
         public void Run()
         {
+            //var playfield = new Playfield(10, this.randomNumber);
+
+            //var renderer = new ConsoleRenderer();
+            //renderer.RenderPlayfield(playfield);
+
             Console.Write("Welcome to \"Battle Field game.\" Enter battle field size: n = ");
             int battleFieldSize = Convert.ToInt32(Console.ReadLine());
             while (battleFieldSize < GlobalConstants.MinBattleFieldSize || battleFieldSize > GlobalConstants.MaxBattleFieldSize)
