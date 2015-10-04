@@ -347,6 +347,11 @@
 
         public void Run()
         {
+            //var playfield = new Playfield(10, this.randomNumber);
+
+            //var renderer = new ConsoleRenderer();
+            //renderer.RenderPlayfield(playfield);
+
             Console.Write("Welcome to \"Battle Field game.\" Enter battle field size: n = ");
             int battleFieldSize = Convert.ToInt32(Console.ReadLine());
             while (battleFieldSize < GlobalConstants.MinBattleFieldSize || battleFieldSize > GlobalConstants.MaxBattleFieldSize)

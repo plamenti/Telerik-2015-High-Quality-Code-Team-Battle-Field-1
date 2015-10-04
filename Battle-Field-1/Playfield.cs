@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using BattleFieldGame.Contracts;
 
-    public class Playfield
+    public class Playfield : IPlayfield
     {
         private const int MaxMineNumber = 5;
 
