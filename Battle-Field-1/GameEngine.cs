@@ -21,31 +21,6 @@
             this.playfield = playfield;
         }
 
-        //public void HitTwo(int x, int y, int rows, int cols, string[,] workField)
-        //{
-        //    workField[x, y] = "X";
-        //    this.HitOne(x, y, rows, cols, workField);
-        //    if (y - 2 > 1)
-        //    {
-        //        workField[x, y - 2] = "X";
-        //    }
-
-        //    if (y < cols - 2)
-        //    {
-        //        workField[x, y + 2] = "X";
-        //    }
-
-        //    if (x - 1 > 1)
-        //    {
-        //        workField[x - 1, y] = "X";
-        //    }
-
-        //    if (x < rows - 1)
-        //    {
-        //        workField[x + 1, y] = "X";
-        //    }
-        //}
-
         //public void HitThree(int x, int y, int rows, int cols, string[,] workField)
         //{
         //    this.HitTwo(x, y, rows, cols, workField);
@@ -271,6 +246,9 @@
                 case "1":
                     this.OneHitted();
                     break;
+                case "2":
+                    this.TwoHitted();
+                    break;
                 default:
                     break;
             }
@@ -279,6 +257,39 @@
         private void OneHitted()
         {
             this.playfield.SetCell(this.currentHit, "X");
+        }
+
+        private void TwoHitted()
+        {
+            this.OneHitted();
+
+            // hit rows
+            for (int row = this.currentHit.Row - 1; row <= this.currentHit.Row + 1; row++)
+            {
+                this.HitPositionRow(row, this.currentHit.Col);
+            }
+
+            // hit cols
+            for (int col = this.currentHit.Col - 1; col <= this.currentHit.Col + 1; col++)
+            {
+                this.HitPositionCol(this.currentHit.Row, col);
+            }
+        }
+
+        private void HitPositionRow(int row, int col)
+        {
+            if (Validator.IsInRange(row, this.playfield.Size))
+            {
+                this.playfield.SetCell(row, col, "X");
+            }
+        }
+
+        private void HitPositionCol(int row, int col)
+        {
+            if (Validator.IsInRange(col, this.playfield.Size))
+            {
+                this.playfield.SetCell(row, col, "X");
+            }
         }
 
         private void PlayTurn()

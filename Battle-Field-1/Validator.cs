@@ -31,5 +31,15 @@
 
             return true;
         }
+
+        public static bool IsInRange(int number, int size)
+        {
+            if (number >= 0 && number < size)
+            {
+                return true;
+            }
+
+            return false;
+        }
     }
 }
