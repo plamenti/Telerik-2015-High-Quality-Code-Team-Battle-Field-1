@@ -149,6 +149,9 @@
                 case "4":
                     this.FourHitted();
                     break;
+                case "5":
+                    this.FiveHitted();
+                    break;
                 default:
                     break;
             }
@@ -204,6 +207,20 @@
             for (int col = this.currentHit.Col - 2; col <= this.currentHit.Col + 2; col++)
             {
                 this.HitPositionCol(this.currentHit.Row, col);
+            }
+        }
+
+        private void FiveHitted()
+        {
+            for (int row = this.currentHit.Row - 2; row <= this.currentHit.Row + 2; row++)
+            {
+                for (int col = this.currentHit.Col - 2; col <= this.currentHit.Col + 2; col++)
+                {
+                    if (Validator.IsInRange(row, this.playfield.Size) && Validator.IsInRange(col, this.playfield.Size))
+                    {
+                        this.playfield.SetCell(row, col, "X");
+                    }
+                }
             }
         }
 
