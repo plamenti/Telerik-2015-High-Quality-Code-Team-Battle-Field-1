@@ -21,112 +21,6 @@
             this.playfield = playfield;
         }
 
-        //public void HitThree(int x, int y, int rows, int cols, string[,] workField)
-        //{
-        //    this.HitTwo(x, y, rows, cols, workField);
-        //    if (x - 2 > 1)
-        //    {
-        //        workField[x - 2, y] = "X";
-        //    }
-
-        //    if (x < rows - 2)
-        //    {
-        //        workField[x + 2, y] = "X";
-        //    }
-
-        //    if (y - 4 > 1)
-        //    {
-        //        workField[x, y - 4] = "X";
-        //    }
-
-        //    if (y == 18)
-        //    {
-        //        workField[x, y + 2] = "X";
-        //    }
-        //    else if (y == 20)
-        //    {
-        //        workField[x, y] = "X";
-        //    }
-        //    else
-        //    {
-        //        if (y < cols - 3)
-        //        {
-        //            workField[x, y + 4] = "X";
-        //        }
-        //    }
-        //}
-
-        //public void HitFour(int x, int y, int rows, int cols, string[,] workField)
-        //{
-        //    this.HitThree(x, y, rows, cols, workField);
-        //    if (x - 2 > 1 && y - 2 > 1)
-        //    {
-        //        workField[x - 2, y - 2] = "X";
-        //    }
-
-        //    if (x - 1 > 1 && y - 4 > 1)
-        //    {
-        //        workField[x - 1, y - 4] = "X";
-        //    }
-
-        //    if (x - 2 > 1 && y < cols - 2)
-        //    {
-        //        workField[x - 2, y + 2] = "X";
-        //    }
-
-        //    if (x < rows - 1 && y - 4 > 1)
-        //    {
-        //        workField[x + 1, y - 4] = "X";
-        //    }
-
-        //    if (x < rows - 2 && y - 2 > 1)
-        //    {
-        //        workField[x + 2, y - 2] = "X";
-        //    }
-
-        //    if (x < rows - 2 && y < cols - 2)
-        //    {
-        //        workField[x + 2, y + 2] = "X";
-        //    }
-
-        //    if (y == 18)
-        //    {
-        //        if (x - 1 > 1)
-        //        {
-        //            workField[x - 1, y + 2] = "X";
-        //        }
-
-        //        if (x < rows - 1)
-        //        {
-        //            workField[x + 1, y + 2] = "X";
-        //        }
-        //    }
-        //    else if (y == 20)
-        //    {
-        //        if (x - 1 > 1)
-        //        {
-        //            workField[x - 1, y] = "X";
-        //        }
-
-        //        if (x < rows - 1)
-        //        {
-        //            workField[x + 1, y] = "X";
-        //        }
-        //    }
-        //    else
-        //    {
-        //        if (x - 1 > 1 && y < cols - 3)
-        //        {
-        //            workField[x - 1, y + 4] = "X";
-        //        }
-
-        //        if (x < rows - 1 && y < cols - 3)
-        //        {
-        //            workField[x + 1, y + 4] = "X";
-        //        }
-        //    }
-        //}
-
         //public void HitFive(int x, int y, int rows, int cols, string[,] workField)
         //{
         //    this.HitFour(x, y, rows, cols, workField);
@@ -252,6 +146,9 @@
                 case "3":
                     this.ThreeHitted();
                     break;
+                case "4":
+                    this.FourHitted();
+                    break;
                 default:
                     break;
             }
@@ -290,6 +187,23 @@
                         this.playfield.SetCell(row, col, "X");
                     }
                 }
+            }
+        }
+
+        private void FourHitted()
+        {
+            this.ThreeHitted();
+
+            // hit rows
+            for (int row = this.currentHit.Row - 2; row <= this.currentHit.Row + 2; row++)
+            {
+                this.HitPositionRow(row, this.currentHit.Col);
+            }
+
+            // hit cols
+            for (int col = this.currentHit.Col - 2; col <= this.currentHit.Col + 2; col++)
+            {
+                this.HitPositionCol(this.currentHit.Row, col);
             }
         }
 
