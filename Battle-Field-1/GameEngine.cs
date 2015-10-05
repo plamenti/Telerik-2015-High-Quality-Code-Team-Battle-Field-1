@@ -1,6 +1,7 @@
 ﻿namespace BattleFieldGame
 {
     using System;
+    using System.Linq;
     using BattleFieldGame.Contracts;
 
     public class GameEngine
@@ -20,75 +21,6 @@
             this.renderer = renderer;
             this.playfield = playfield;
         }
-
-        //public void HitFive(int x, int y, int rows, int cols, string[,] workField)
-        //{
-        //    this.HitFour(x, y, rows, cols, workField);
-        //    if (x - 2 > 1 && y - 4 > 1)
-        //    {
-        //        workField[x - 2, y - 4] = "X";
-        //    }
-
-        //    if (x < rows - 2 && y - 4 > 1)
-        //    {
-        //        workField[x + 2, y - 4] = "X";
-        //    }
-
-        //    if (y == 18)
-        //    {
-        //        if (x < rows - 2)
-        //        {
-        //            workField[x + 2, y + 2] = "X";
-        //        }
-
-        //        if (x - 2 > 1)
-        //        {
-        //            workField[x - 2, y + 2] = "X";
-        //        }
-        //    }
-        //    else if (y == 20)
-        //    {
-        //        if (x < rows - 2)
-        //        {
-        //            workField[x + 2, y] = "X";
-        //        }
-
-        //        if (x - 2 > 1)
-        //        {
-        //            workField[x - 2, y] = "X";
-        //        }
-        //    }
-        //    else
-        //    {
-        //        if (x < rows - 2 && y < cols - 3)
-        //        {
-        //            workField[x + 2, y + 4] = "X";
-        //        }
-
-        //        if (x - 2 > 1 && y < cols - 3)
-        //        {
-        //            workField[x - 2, y + 4] = "X";
-        //        }
-        //    }
-        //}
-
-        //public bool HasGameEnded(int rows, int cols, string[,] workField)
-        //{
-        //    bool isGameOver = true;
-        //    for (int i = 2; i < rows; i++)
-        //    {
-        //        for (int j = 2; j < cols; j++)
-        //        {
-        //            if (workField[i, j] == "1" || workField[i, j] == "2" || workField[i, j] == "3" || workField[i, j] == "4" || workField[i, j] == "5")
-        //            {
-        //                isGameOver = false;
-        //                break;
-        //            }
-        //        }
-        //    }
-
-        //    return isGameOver;
-        //}
 
         public void Run()
         {
@@ -110,6 +42,8 @@
             {
                 this.PlayTurn();
             }
+
+            this.renderer.RenderMessage("Congratiolations you won in " + this.numberOfTurnsPlayed + " turns!");
         }
 
         private string GetSymbolFromField(IPlayfield playfield)
@@ -240,6 +174,23 @@
             }
         }
 
+        private void HasGameEnded()
+        {
+            string[] mineNumbers = { "1", "2", "3", "4", "5" };
+            for (int row = 0; row < this.playfield.Size; row++)
+            {
+                for (int col = 0; col < this.playfield.Size; col++)
+                {
+                    if (mineNumbers.Contains(this.playfield.GetCell(row, col)))
+                    {
+                        return;
+                    }
+                }
+            }
+
+            this.isGameOver = true;
+        }
+
         private void PlayTurn()
         {
             this.numberOfTurnsPlayed++;
@@ -253,14 +204,8 @@
             this.Hit(symbol);
 
             this.renderer.RenderPlayfield(this.playfield);
-            //if (!this.HasGameEnded(rows, cols, workField))
-            //{
-            //    this.PlayTurn(n, rows, cols, workField);
-            //}
-            //else
-            //{
-            //    Console.WriteLine("Game over. Detonated mines: " + numberOfTurnsPlayed);
-            //}
+
+            this.HasGameEnded();
         }
     }
 }
