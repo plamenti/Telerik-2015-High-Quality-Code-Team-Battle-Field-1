@@ -249,6 +249,9 @@
                 case "2":
                     this.TwoHitted();
                     break;
+                case "3":
+                    this.ThreeHitted();
+                    break;
                 default:
                     break;
             }
@@ -273,6 +276,20 @@
             for (int col = this.currentHit.Col - 1; col <= this.currentHit.Col + 1; col++)
             {
                 this.HitPositionCol(this.currentHit.Row, col);
+            }
+        }
+
+        private void ThreeHitted()
+        {
+            for (int row = this.currentHit.Row - 1; row <= this.currentHit.Row + 1; row++)
+            {
+                for (int col = this.currentHit.Col - 1; col <= this.currentHit.Col + 1; col++)
+                {
+                    if (Validator.IsInRange(row, this.playfield.Size) && Validator.IsInRange(col, this.playfield.Size))
+                    {
+                        this.playfield.SetCell(row, col, "X");
+                    }
+                }
             }
         }
 
