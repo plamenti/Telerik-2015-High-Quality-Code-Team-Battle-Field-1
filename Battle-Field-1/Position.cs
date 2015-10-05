@@ -21,7 +21,7 @@
                 return this.row;
             }
 
-            private set
+            set
             {
                 if (Validator.IsNegativeNumber(value))
                 {
@@ -39,7 +39,7 @@
                 return this.col;
             }
 
-            private set
+            set
             {
                 if (Validator.IsNegativeNumber(value))
                 {

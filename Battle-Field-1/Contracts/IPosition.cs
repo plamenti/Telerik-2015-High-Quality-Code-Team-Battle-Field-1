@@ -2,8 +2,8 @@
 {
     public interface IPosition
     {
-        int Row { get; }
+        int Row { get; set; }
 
-        int Col { get; }
+        int Col { get; set; }
     }
 }

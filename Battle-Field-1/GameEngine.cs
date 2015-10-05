@@ -11,6 +11,7 @@
         private IPlayfield playfield;
         private int numberOfTurnsPlayed = 0;
         private bool isGameOver = false;
+        private IPosition currentHit = new Position(0, 0);
 
         public GameEngine(IRandomNumberGenerator randomNumberGenerator, IReader reader, IRenderer renderer, IPlayfield playfield)
         {
@@ -19,30 +20,6 @@
             this.renderer = renderer;
             this.playfield = playfield;
         }
-        
-        //public void HitOne(int x, int y, int rows, int cols, string[,] workField)
-        //{
-        //    workField[x, y] = "X";
-        //    if (x - 1 > 1 && y - 2 > 1)
-        //    {
-        //        workField[x - 1, y - 2] = "X";
-        //    }
-
-        //    if (x - 1 > 1 && y < cols - 2)
-        //    {
-        //        workField[x - 1, y + 2] = "X";
-        //    }
-
-        //    if (x < rows - 1 && y < cols - 2)
-        //    {
-        //        workField[x + 1, y + 2] = "X";
-        //    }
-
-        //    if (x < rows - 1 && y - 2 > 1)
-        //    {
-        //        workField[x + 1, y - 2] = "X";
-        //    }
-        //}
 
         //public void HitTwo(int x, int y, int rows, int cols, string[,] workField)
         //{
@@ -281,12 +258,27 @@
             int row = coordinates[0];
             int col = coordinates[1];
 
+            this.currentHit.Row = row;
+            this.currentHit.Col = col;
+
             return playfield.GetCell(row, col);
         }
 
         private void Hit(string symbol)
         {
-            throw new NotImplementedException();
+            switch (symbol)
+            {
+                case "1":
+                    this.OneHitted();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void OneHitted()
+        {
+            this.playfield.SetCell(this.currentHit, "X");
         }
 
         private void PlayTurn()
@@ -301,30 +293,7 @@
 
             this.Hit(symbol);
 
-            //switch (hitCoordinate)
-            //{
-            //    case 1:
-            //        this.HitOne(x, y, rows, cols, workField);
-            //        break;
-
-            //    case 2:
-            //        this.HitTwo(x, y, rows, cols, workField);
-            //        break;
-
-            //    case 3:
-            //        this.HitThree(x, y, rows, cols, workField);
-            //        break;
-
-            //    case 4:
-            //        this.HitFour(x, y, rows, cols, workField);
-            //        break;
-
-            //    case 5:
-            //        this.HitFive(x, y, rows, cols, workField);
-            //        break;
-            //}
-
-            ////this.PrintArray(rows, cols, workField);
+            this.renderer.RenderPlayfield(this.playfield);
             //if (!this.HasGameEnded(rows, cols, workField))
             //{
             //    this.PlayTurn(n, rows, cols, workField);
