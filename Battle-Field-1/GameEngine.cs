@@ -6,6 +6,7 @@
 
     public class GameEngine
     {
+        private const string SymbolX = "X";
         private IRandomNumberGenerator randomNumberGenerator;
         private IReader reader;
         private IRenderer renderer;
@@ -99,68 +100,57 @@
 
         private void OneHitted()
         {
-            this.playfield.SetCell(this.currentHit, "X");
+            this.playfield.SetCell(this.currentHit, SymbolX);
         }
 
         private void TwoHitted()
         {
             this.OneHitted();
-
-            // hit rows
-            for (int row = this.currentHit.Row - 1; row <= this.currentHit.Row + 1; row++)
-            {
-                this.HitPositionRow(row, this.currentHit.Col);
-            }
-
-            // hit cols
-            for (int col = this.currentHit.Col - 1; col <= this.currentHit.Col + 1; col++)
-            {
-                this.HitPositionCol(this.currentHit.Row, col);
-            }
+            this.HitInCross(1);
         }
 
         private void ThreeHitted()
         {
-            for (int row = this.currentHit.Row - 1; row <= this.currentHit.Row + 1; row++)
-            {
-                for (int col = this.currentHit.Col - 1; col <= this.currentHit.Col + 1; col++)
-                {
-                    if (Validator.IsInRange(row, this.playfield.Size) && Validator.IsInRange(col, this.playfield.Size))
-                    {
-                        this.playfield.SetCell(row, col, "X");
-                    }
-                }
-            }
+            this.HitInDiameter(1);
         }
 
         private void FourHitted()
         {
             this.ThreeHitted();
+            this.HitInCross(2);
+        }
 
+        private void FiveHitted()
+        {
+            this.HitInDiameter(2);
+        }
+
+        private void HitInDiameter(int lines)
+        {
+            for (int row = this.currentHit.Row - lines; row <= this.currentHit.Row + lines; row++)
+            {
+                for (int col = this.currentHit.Col - lines; col <= this.currentHit.Col + lines; col++)
+                {
+                    if (Validator.IsInRange(row, this.playfield.Size) && Validator.IsInRange(col, this.playfield.Size))
+                    {
+                        this.playfield.SetCell(row, col, SymbolX);
+                    }
+                }
+            }
+        }
+
+        private void HitInCross(int lines)
+        {
             // hit rows
-            for (int row = this.currentHit.Row - 2; row <= this.currentHit.Row + 2; row++)
+            for (int row = this.currentHit.Row - lines; row <= this.currentHit.Row + lines; row++)
             {
                 this.HitPositionRow(row, this.currentHit.Col);
             }
 
             // hit cols
-            for (int col = this.currentHit.Col - 2; col <= this.currentHit.Col + 2; col++)
+            for (int col = this.currentHit.Col - lines; col <= this.currentHit.Col + lines; col++)
             {
                 this.HitPositionCol(this.currentHit.Row, col);
-            }
-        }
-
-        private void FiveHitted()
-        {
-            for (int row = this.currentHit.Row - 2; row <= this.currentHit.Row + 2; row++)
-            {
-                for (int col = this.currentHit.Col - 2; col <= this.currentHit.Col + 2; col++)
-                {
-                    if (Validator.IsInRange(row, this.playfield.Size) && Validator.IsInRange(col, this.playfield.Size))
-                    {
-                        this.playfield.SetCell(row, col, "X");
-                    }
-                }
             }
         }
 
@@ -168,7 +158,7 @@
         {
             if (Validator.IsInRange(row, this.playfield.Size))
             {
-                this.playfield.SetCell(row, col, "X");
+                this.playfield.SetCell(row, col, SymbolX);
             }
         }
 
@@ -176,7 +166,7 @@
         {
             if (Validator.IsInRange(col, this.playfield.Size))
             {
-                this.playfield.SetCell(row, col, "X");
+                this.playfield.SetCell(row, col, SymbolX);
             }
         }
 
@@ -203,7 +193,7 @@
             {
                 for (int col = 0; col < this.playfield.Size; col++)
                 {
-                    if (this.playfield.GetCell(row, col) == "X")
+                    if (this.playfield.GetCell(row, col) == SymbolX)
                     {
                         this.score++;
                     }
@@ -216,7 +206,7 @@
             this.numberOfTurnsPlayed++;
             string symbol = this.GetSymbolFromField(this.playfield);
 
-            while (symbol == "-" || symbol == "X")
+            while (symbol == "-" || symbol == SymbolX)
             {
                 symbol = this.GetSymbolFromField(this.playfield);
             }
