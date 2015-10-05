@@ -11,6 +11,8 @@
         private IRenderer renderer;
         private IPlayfield playfield;
         private int numberOfTurnsPlayed = 0;
+        private int score = 0;
+        private int maxPossibleScore;
         private bool isGameOver = false;
         private IPosition currentHit = new Position(0, 0);
 
@@ -35,6 +37,7 @@
             }
 
             this.playfield = new Playfield(playfieldSize);
+            this.maxPossibleScore = playfieldSize * playfieldSize;
             this.playfield.FillPlayfield(this.randomNumberGenerator);
             this.renderer.RenderPlayfield(this.playfield);
 
@@ -43,7 +46,10 @@
                 this.PlayTurn();
             }
 
+            this.CalculateScore();
+
             this.renderer.RenderMessage("Congratiolations you won in " + this.numberOfTurnsPlayed + " turns!");
+            this.renderer.RenderMessage("With " + this.score + " score from " + this.maxPossibleScore + " max possible score!");
         }
 
         private string GetSymbolFromField(IPlayfield playfield)
@@ -174,7 +180,7 @@
             }
         }
 
-        private void HasGameEnded()
+        private void CheckForGameEnd()
         {
             string[] mineNumbers = { "1", "2", "3", "4", "5" };
             for (int row = 0; row < this.playfield.Size; row++)
@@ -191,6 +197,20 @@
             this.isGameOver = true;
         }
 
+        private void CalculateScore()
+        {
+            for (int row = 0; row < this.playfield.Size; row++)
+            {
+                for (int col = 0; col < this.playfield.Size; col++)
+                {
+                    if (this.playfield.GetCell(row, col) == "X")
+                    {
+                        this.score++;
+                    }
+                }
+            }
+        }
+
         private void PlayTurn()
         {
             this.numberOfTurnsPlayed++;
@@ -205,7 +225,7 @@
 
             this.renderer.RenderPlayfield(this.playfield);
 
-            this.HasGameEnded();
+            this.CheckForGameEnd();
         }
     }
 }
