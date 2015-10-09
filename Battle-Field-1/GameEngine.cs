@@ -15,7 +15,7 @@
 		private int score = 0;
 		private int maxPossibleScore;
 		private bool isGameOver = false;
-		// Tectonik: currentHit can be made readonly, but I won't change it because I could break something. The person responsible for this should look over this comment, decide what to do and delete it
+		// Tectonik: currentHit can be made readonly, but I won't change it because I could break something. The person responsible for this should look over this comment, decide what to do and delete the comment
 		private IPosition currentHit = new Position(0, 0);
 
 		public GameEngine(IRandomNumberGenerator randomNumberGenerator, IReader reader, IRenderer renderer, IPlayfield playfield)
