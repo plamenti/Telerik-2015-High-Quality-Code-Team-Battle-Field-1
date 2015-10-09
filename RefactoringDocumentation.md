@@ -1,7 +1,7 @@
 From method Run() removed unneenеd code:
 
 Before: …
-               
+
                     if (col % 2 == 0)
                     {
                         if (col == 2)
@@ -24,3 +24,17 @@ After:…
                     {
                         battleField[0, col] = " ";
                     }
+
+##### Tectonik
+
+Added contract IGameEngine in folder contracts, file IGameEngine.cs
+<!--  -->
+Before:
+```csharp
+public class GameEngine
+```
+
+After:
+```csharp
+public class GameEngine : IGameEngine
+```
