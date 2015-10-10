@@ -50,6 +50,7 @@
     <Compile Include="Contracts\IRandomNumberGenerator.cs" />
     <Compile Include="Contracts\IReader.cs" />
     <Compile Include="Contracts\IRenderer.cs" />
+    <Compile Include="Factories\PlayfieldFactory.cs" />
     <Compile Include="GlobalConstants.cs" />
     <Compile Include="Playfields\LargePlayfield.cs" />
     <Compile Include="Playfields\MediumPlayfield.cs" />

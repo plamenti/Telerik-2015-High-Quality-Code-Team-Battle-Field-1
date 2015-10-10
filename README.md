@@ -1,5 +1,3 @@
-High-Quality Programming Code – Team Projects
-=============================================
 Detailed Assignment Description
 -------------------------------
 In order to ensure the high quality of the assigned project you need to fulfill the following tasks:
@@ -11,6 +9,7 @@ In order to ensure the high quality of the assigned project you need to fulfill 
 2.  **TODO: Implement design patterns** – redesign the project to fulfil 9 of the [Software Design patterns](http://en.wikipedia.org/wiki/Software_design_pattern)
     -   **TODO: Structural patterns** – implement **at least 3** of the structural design patterns
     -   **TODO: Behavior patterns** – implement **at least 3** of the behavioral design patterns
+        * Template Method - **DONE**
     -   **TODO: Creational patterns** – implement **at least 3** of the creational design patterns
 3.  **DONE Follow the SOLID and DRY principles** – Single responsibility, Open/close, Liskov substitution, Interface segregation, Dependency inversion, Don't repeat yourself
 4.  **TODO: Design and implement unit tests** covering the entire project functionality. 

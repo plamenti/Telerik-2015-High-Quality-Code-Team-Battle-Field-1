@@ -1,5 +1,6 @@
 ﻿namespace BattleFieldGame
 {
+    using BattleFieldGame.Factories;
     using BattleFieldGame.Playfields;
 
     public class Start
@@ -9,7 +10,8 @@
             var randomNumberGenerator = new RandomNumberGenerator();
             var reader = new ConsoleReader();
             var renderer = new ConsoleRenderer();
-            var playfield = new SmallPlayfield();
+            var factory = new PlayfieldFactory();
+            var playfield = factory.CreateSmallPlayfield();
             var game = new GameEngine(randomNumberGenerator, reader, renderer, playfield);
             game.Run();
         }
