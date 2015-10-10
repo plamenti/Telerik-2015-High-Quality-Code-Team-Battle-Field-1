@@ -2,7 +2,7 @@
 {
     public class SmallPlayfield : Playfield
     {
-        private const int NumberOfMines = 3;
+        private const int NumberOfMines = 2;
 
         public SmallPlayfield()
             : base()

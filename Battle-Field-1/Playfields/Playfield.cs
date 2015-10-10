@@ -7,12 +7,12 @@
     public abstract class Playfield : IPlayfield
     {
         private const int MaxMineNumber = 5;
-
         private string[,] grid;
         private int size;
 
         public Playfield()
         {
+            this.grid = new string[this.size, this.size];
         }
 
         public int Size
