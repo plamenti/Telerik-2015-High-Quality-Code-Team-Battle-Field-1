@@ -10,7 +10,6 @@
     [TestClass]
     public class PlayfieldTests
     {
-
         [TestMethod]
         public void TestGetCellMethodShouldProperlyReturnSymbol()
         {

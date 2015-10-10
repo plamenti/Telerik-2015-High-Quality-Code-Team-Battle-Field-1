@@ -45,11 +45,12 @@
   <ItemGroup>
     <Compile Include="ConsoleReader.cs" />
     <Compile Include="Contracts\IGameEngine.cs" />
-    <Compile Include="Contracts\IPlayfield.cs" />
+    <Compile Include="Playfields\IPlayfield.cs" />
     <Compile Include="Contracts\IPosition.cs" />
     <Compile Include="Contracts\IRandomNumberGenerator.cs" />
     <Compile Include="Contracts\IReader.cs" />
     <Compile Include="Contracts\IRenderer.cs" />
+    <Compile Include="Factories\IPlayfieldFactory.cs" />
     <Compile Include="Factories\PlayfieldFactory.cs" />
     <Compile Include="GlobalConstants.cs" />
     <Compile Include="Playfields\LargePlayfield.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="Validator.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Commands\" />
     <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

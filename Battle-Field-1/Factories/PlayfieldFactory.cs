@@ -2,19 +2,34 @@
 {
     using BattleFieldGame.Playfields;
 
-    public class PlayfieldFactory
+    public class PlayfieldFactory : IPlayfieldFactory
     {
-        public SmallPlayfield CreateSmallPlayfield()
+        public Playfield CreatePlayfield(string size)
+        {
+            switch (size.ToLower())
+            {
+                case"small":
+                    return this.CreateSmallPlayfield();
+                case "medium":
+                    return this.CreateMediumPlayfield();
+                case "large":
+                    return this.CreateLargePlayfield();
+                default:
+                    return null;
+            }
+        }
+
+        private SmallPlayfield CreateSmallPlayfield()
         {
             return new SmallPlayfield();
         }
 
-        public MediumPlayfield CreateMediumPlayfield()
+        private MediumPlayfield CreateMediumPlayfield()
         {
             return new MediumPlayfield();
         }
 
-        public LargePlayfield CreateLargePlayfield()
+        private LargePlayfield CreateLargePlayfield()
         {
             return new LargePlayfield();
         }

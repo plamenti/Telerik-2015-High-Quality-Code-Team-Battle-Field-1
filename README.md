@@ -11,6 +11,7 @@ In order to ensure the high quality of the assigned project you need to fulfill 
     -   **TODO: Behavior patterns** – implement **at least 3** of the behavioral design patterns
         * Template Method - **DONE**
     -   **TODO: Creational patterns** – implement **at least 3** of the creational design patterns
+        * Factory method - **DONE**
 3.  **DONE Follow the SOLID and DRY principles** – Single responsibility, Open/close, Liskov substitution, Interface segregation, Dependency inversion, Don't repeat yourself
 4.  **TODO: Design and implement unit tests** covering the entire project functionality. 
 	-	**TODO:** The code coverage of the unit tests should be at least 90%.

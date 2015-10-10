@@ -11,7 +11,7 @@
             var reader = new ConsoleReader();
             var renderer = new ConsoleRenderer();
             var factory = new PlayfieldFactory();
-            var playfield = factory.CreateSmallPlayfield();
+            var playfield = factory.CreatePlayfield("small");
             var game = new GameEngine(randomNumberGenerator, reader, renderer, playfield);
             game.Run();
         }
