@@ -7,6 +7,7 @@
 
     public class GameEngine : IGameEngine
     {
+        private const string ChooseCommand = "Choose \n\rEnter coordinates(Enter only 'Enter')\n\rSave";
         private const string SymbolX = "X";
         private IRandomNumberGenerator randomNumberGenerator;
         private IReader reader;
@@ -34,7 +35,9 @@
 
             while (!this.isGameOver)
             {
-                this.PlayTurn();
+                Console.WriteLine(ChooseCommand);
+                string command = Console.ReadLine();
+                this.ProceedCommand(command);
             }
 
             this.CalculateScore();
@@ -206,6 +209,25 @@
             this.renderer.RenderPlayfield(this.playfield);
 
             this.CheckForGameEnd();
+        }
+
+        private void ProceedCommand(string command)
+        {
+            switch (command)
+            {
+                case "Enter":
+                    Console.Clear();
+                    this.renderer.RenderPlayfield(this.playfield);
+                    this.PlayTurn();
+                    break;
+                case "Save":
+                    throw new NotImplementedException();
+                default:
+                    Console.Clear();
+                    Console.WriteLine(ChooseCommand);
+                    this.ProceedCommand(Console.ReadLine());                    
+                    break;
+            }
         }
     }
 }
