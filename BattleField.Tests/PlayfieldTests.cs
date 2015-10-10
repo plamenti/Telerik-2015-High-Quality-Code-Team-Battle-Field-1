@@ -3,6 +3,7 @@
     using System;
     using BattleFieldGame;
     using BattleFieldGame.Contracts;
+    using BattleFieldGame.Playfields;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Telerik.JustMock;
 

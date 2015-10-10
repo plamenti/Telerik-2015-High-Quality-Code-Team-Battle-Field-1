@@ -51,7 +51,10 @@
     <Compile Include="Contracts\IReader.cs" />
     <Compile Include="Contracts\IRenderer.cs" />
     <Compile Include="GlobalConstants.cs" />
-    <Compile Include="Playfield.cs" />
+    <Compile Include="Playfields\LargePlayfield.cs" />
+    <Compile Include="Playfields\MediumPlayfield.cs" />
+    <Compile Include="Playfields\Playfield.cs" />
+    <Compile Include="Playfields\SmallPlayfield.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="RandomNumberGenerator.cs" />
     <Compile Include="Renderer.cs" />

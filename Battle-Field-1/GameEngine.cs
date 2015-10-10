@@ -3,6 +3,7 @@
     using System;
     using System.Linq;
     using BattleFieldGame.Contracts;
+    using BattleFieldGame.Playfields;
 
     public class GameEngine : IGameEngine
     {
@@ -10,14 +11,14 @@
         private IRandomNumberGenerator randomNumberGenerator;
         private IReader reader;
         private IRenderer renderer;
-        private IPlayfield playfield;
+        private Playfield playfield;
         private int numberOfTurnsPlayed = 0;
         private int score = 0;
         private int maxPossibleScore;
         private bool isGameOver = false;
         private IPosition currentHit = new Position(0, 0);
 
-        public GameEngine(IRandomNumberGenerator randomNumberGenerator, IReader reader, IRenderer renderer, IPlayfield playfield)
+        public GameEngine(IRandomNumberGenerator randomNumberGenerator, IReader reader, IRenderer renderer, Playfield playfield)
         {
             this.randomNumberGenerator = randomNumberGenerator;
             this.reader = reader;
@@ -37,8 +38,8 @@
                 playfieldSize = this.reader.ReadSingleNumber();
             }
 
-            this.playfield = new Playfield(playfieldSize);
-            this.maxPossibleScore = playfieldSize * playfieldSize;
+            this.playfield = new LargePlayfield();
+            this.maxPossibleScore = this.playfield.Size * this.playfield.Size;
             this.playfield.FillPlayfield(this.randomNumberGenerator);
             this.renderer.RenderPlayfield(this.playfield);
 
