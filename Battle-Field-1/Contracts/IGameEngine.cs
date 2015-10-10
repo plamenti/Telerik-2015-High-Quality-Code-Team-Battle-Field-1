@@ -1,10 +1,7 @@
 ﻿namespace BattleFieldGame.Contracts
 {
-	using System;
-	using System.Linq;
-
-	interface IGameEngine
-	{
-		void Run();
-	}
+    public interface IGameEngine
+    {
+        void Run();
+    }
 }

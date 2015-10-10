@@ -30,7 +30,7 @@
             string numberToParse = "Not a number";
             int parsedNumber;
             string expected = "Enter a number between 0 and 5!";
-            string actual = "";
+            string actual = string.Empty;
             var fakeConsoleReader = Mock.Create<IReader>();
             Mock.Arrange(() => fakeConsoleReader.ReadSingleNumber()).DoInstead(() =>
             {
@@ -54,7 +54,7 @@
         {
             string input = "12";
             string expected = "Please enter coordinates/row, col/ stared from zero(0), separated by whitespace: ";
-            string actual = "";
+            string actual = string.Empty;
             var fakeConsoleReader = Mock.Create<IReader>();
             Mock.Arrange(() => fakeConsoleReader.ReadCoordinates()).DoInstead(() =>
             {
