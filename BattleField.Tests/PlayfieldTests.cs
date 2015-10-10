@@ -1,9 +1,9 @@
 ﻿namespace BattleField.Tests
 {
+    using System;
     using BattleFieldGame;
     using BattleFieldGame.Contracts;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using System;
     using Telerik.JustMock;
 
     [TestClass]
@@ -14,8 +14,8 @@
         {
             IRandomNumberGenerator fakeRandomNumberGenerator = Mock.Create<IRandomNumberGenerator>();
             Mock.Arrange(() => fakeRandomNumberGenerator.Next(Arg.IsAny<int>(), Arg.IsAny<int>())).Returns(1);
-            int PlayFieldSize = 2;
-            Playfield playfield = new Playfield(PlayFieldSize);
+            int playFieldSize = 2;
+            Playfield playfield = new Playfield(playFieldSize);
             string[,] expected = new string[2, 2];
             expected[0, 0] = "-";
             expected[0, 1] = "-";
@@ -34,8 +34,8 @@
         [TestMethod]
         public void TestGetCellMethodShouldProperlyReturnSymbol()
         {
-            int PlayFieldSize = 4;
-            Playfield playfield = new Playfield(PlayFieldSize);
+            int playFieldSize = 4;
+            Playfield playfield = new Playfield(playFieldSize);
 
             playfield.SetCell(0, 0, "@");
             string actual = playfield.GetCell(0, 0);
@@ -47,8 +47,8 @@
         [TestMethod]
         public void TestGetCellMethodShouldProperlyReturnSymbolUsingPosition()
         {
-            int PlayFieldSize = 4;
-            Playfield playfield = new Playfield(PlayFieldSize);
+            int playFieldSize = 4;
+            Playfield playfield = new Playfield(playFieldSize);
             IPosition position = new Position(0, 0);
 
             playfield.SetCell(position.Row, position.Col, "@");
@@ -61,8 +61,8 @@
         [TestMethod]
         public void TestSetCellMethodShouldProperlySetSymbolInGridAndGetMEthodShouldReturnIt()
         {
-            int PlayFieldSize = 4;
-            Playfield playfield = new Playfield(PlayFieldSize);
+            int playFieldSize = 4;
+            Playfield playfield = new Playfield(playFieldSize);
 
             playfield.SetCell(0, 0, "@");
             string actual = playfield.GetCell(0, 0);
@@ -74,8 +74,8 @@
         [TestMethod]
         public void TestSetCellMethodUsingIPositionShouldProperlySetSymbolInGridAndGetMethodShouldReturnIt()
         {
-            int PlayFieldSize = 4;
-            Playfield playfield = new Playfield(PlayFieldSize);
+            int playFieldSize = 4;
+            Playfield playfield = new Playfield(playFieldSize);
             IPosition position = new Position(0, 0);
 
             playfield.SetCell(position.Row, position.Col, "@");
