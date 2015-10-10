@@ -3,24 +3,23 @@
     using System;
     using System.Linq;
     using BattleFieldGame.Contracts;
+    using BattleFieldGame.Playfields;
 
     public class GameEngine : IGameEngine
     {
+        private const string ChooseCommand = "Choose \n\rEnter coordinates(Enter only 'Enter')\n\rSave";
         private const string SymbolX = "X";
-
-        //// Tectonik: currentHit can be made readonly, but I won't change it because I could break something. The person responsible for this should look over this comment, decide what to do and delete the comment
-        private IPosition currentHit = new Position(0, 0);
-
-        private bool isGameOver = false;
-        private int maxPossibleScore;
-        private int numberOfTurnsPlayed = 0;
-        private IPlayfield playfield;
         private IRandomNumberGenerator randomNumberGenerator;
         private IReader reader;
         private IRenderer renderer;
+        private Playfield playfield;
+        private int numberOfTurnsPlayed = 0;
         private int score = 0;
+        private int maxPossibleScore;
+        private bool isGameOver = false;
+        private IPosition currentHit = new Position(0, 0);
 
-        public GameEngine(IRandomNumberGenerator randomNumberGenerator, IReader reader, IRenderer renderer, IPlayfield playfield)
+        public GameEngine(IRandomNumberGenerator randomNumberGenerator, IReader reader, IRenderer renderer, Playfield playfield)
         {
             this.randomNumberGenerator = randomNumberGenerator;
             this.reader = reader;
@@ -30,72 +29,21 @@
 
         public void Run()
         {
-            Console.Write(GlobalConstants.WelcomeMessage);
-
-            int playfieldSize = this.reader.ReadSingleNumber();
-
-            while (playfieldSize < GlobalConstants.MinBattleFieldSize || playfieldSize > GlobalConstants.MaxBattleFieldSize)
-            {
-                Console.WriteLine(GlobalConstants.NumberBetweenMessage(GlobalConstants.MinBattleFieldSize, GlobalConstants.MaxBattleFieldSize));
-                playfieldSize = this.reader.ReadSingleNumber();
-            }
-
-            this.playfield = new Playfield(playfieldSize);
-            this.maxPossibleScore = playfieldSize * playfieldSize;
+            this.maxPossibleScore = this.playfield.Size * this.playfield.Size;
             this.playfield.FillPlayfield(this.randomNumberGenerator);
             this.renderer.RenderPlayfield(this.playfield);
 
             while (!this.isGameOver)
             {
-                this.PlayTurn();
+                Console.WriteLine(ChooseCommand);
+                string command = Console.ReadLine();
+                this.ProceedCommand(command);
             }
 
             this.CalculateScore();
 
             this.renderer.RenderMessage("Congratiolations you won in " + this.numberOfTurnsPlayed + " turns!");
             this.renderer.RenderMessage("With " + this.score + " score from " + this.maxPossibleScore + " max possible score!");
-        }
-
-        private void CalculateScore()
-        {
-            for (int row = 0; row < this.playfield.Size; row++)
-            {
-                for (int col = 0; col < this.playfield.Size; col++)
-                {
-                    if (this.playfield.GetCell(row, col) == SymbolX)
-                    {
-                        this.score++;
-                    }
-                }
-            }
-        }
-
-        private void CheckForGameEnd()
-        {
-            string[] mineNumbers = { "1", "2", "3", "4", "5" };
-            for (int row = 0; row < this.playfield.Size; row++)
-            {
-                for (int col = 0; col < this.playfield.Size; col++)
-                {
-                    if (mineNumbers.Contains(this.playfield.GetCell(row, col)))
-                    {
-                        return;
-                    }
-                }
-            }
-
-            this.isGameOver = true;
-        }
-
-        private void FiveHitted()
-        {
-            this.HitInDiameter(2);
-        }
-
-        private void FourHitted()
-        {
-            this.ThreeHitted();
-            this.HitInCross(2);
         }
 
         private string GetSymbolFromField(IPlayfield playfield)
@@ -126,25 +74,61 @@
                 case "1":
                     this.OneHitted();
                     break;
-
                 case "2":
                     this.TwoHitted();
                     break;
-
                 case "3":
                     this.ThreeHitted();
                     break;
-
                 case "4":
                     this.FourHitted();
                     break;
-
                 case "5":
                     this.FiveHitted();
                     break;
-
                 default:
                     break;
+            }
+        }
+
+        private void OneHitted()
+        {
+            this.playfield.SetCell(this.currentHit, SymbolX);
+        }
+
+        private void TwoHitted()
+        {
+            this.OneHitted();
+            this.HitInCross(1);
+        }
+
+        private void ThreeHitted()
+        {
+            this.HitInDiameter(1);
+        }
+
+        private void FourHitted()
+        {
+            this.ThreeHitted();
+            this.HitInCross(2);
+        }
+
+        private void FiveHitted()
+        {
+            this.HitInDiameter(2);
+        }
+
+        private void HitInDiameter(int lines)
+        {
+            for (int row = this.currentHit.Row - lines; row <= this.currentHit.Row + lines; row++)
+            {
+                for (int col = this.currentHit.Col - lines; col <= this.currentHit.Col + lines; col++)
+                {
+                    if (Validator.IsInRange(row, this.playfield.Size) && Validator.IsInRange(col, this.playfield.Size))
+                    {
+                        this.playfield.SetCell(row, col, SymbolX);
+                    }
+                }
             }
         }
 
@@ -163,17 +147,11 @@
             }
         }
 
-        private void HitInDiameter(int lines)
+        private void HitPositionRow(int row, int col)
         {
-            for (int row = this.currentHit.Row - lines; row <= this.currentHit.Row + lines; row++)
+            if (Validator.IsInRange(row, this.playfield.Size))
             {
-                for (int col = this.currentHit.Col - lines; col <= this.currentHit.Col + lines; col++)
-                {
-                    if (Validator.IsInRange(row, this.playfield.Size) && Validator.IsInRange(col, this.playfield.Size))
-                    {
-                        this.playfield.SetCell(row, col, SymbolX);
-                    }
-                }
+                this.playfield.SetCell(row, col, SymbolX);
             }
         }
 
@@ -185,17 +163,35 @@
             }
         }
 
-        private void HitPositionRow(int row, int col)
+        private void CheckForGameEnd()
         {
-            if (Validator.IsInRange(row, this.playfield.Size))
+            string[] mineNumbers = { "1", "2", "3", "4", "5" };
+            for (int row = 0; row < this.playfield.Size; row++)
             {
-                this.playfield.SetCell(row, col, SymbolX);
+                for (int col = 0; col < this.playfield.Size; col++)
+                {
+                    if (mineNumbers.Contains(this.playfield.GetCell(row, col)))
+                    {
+                        return;
+                    }
+                }
             }
+
+            this.isGameOver = true;
         }
 
-        private void OneHitted()
+        private void CalculateScore()
         {
-            this.playfield.SetCell(this.currentHit, SymbolX);
+            for (int row = 0; row < this.playfield.Size; row++)
+            {
+                for (int col = 0; col < this.playfield.Size; col++)
+                {
+                    if (this.playfield.GetCell(row, col) == SymbolX)
+                    {
+                        this.score++;
+                    }
+                }
+            }
         }
 
         private void PlayTurn()
@@ -215,15 +211,23 @@
             this.CheckForGameEnd();
         }
 
-        private void ThreeHitted()
+        private void ProceedCommand(string command)
         {
-            this.HitInDiameter(1);
-        }
-
-        private void TwoHitted()
-        {
-            this.OneHitted();
-            this.HitInCross(1);
+            switch (command)
+            {
+                case "Enter":
+                    Console.Clear();
+                    this.renderer.RenderPlayfield(this.playfield);
+                    this.PlayTurn();
+                    break;
+                case "Save":
+                    throw new NotImplementedException();
+                default:
+                    Console.Clear();
+                    Console.WriteLine(ChooseCommand);
+                    this.ProceedCommand(Console.ReadLine());                    
+                    break;
+            }
         }
     }
 }

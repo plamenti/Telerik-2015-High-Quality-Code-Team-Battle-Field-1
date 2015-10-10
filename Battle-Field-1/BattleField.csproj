@@ -45,13 +45,18 @@
   <ItemGroup>
     <Compile Include="ConsoleReader.cs" />
     <Compile Include="Contracts\IGameEngine.cs" />
-    <Compile Include="Contracts\IPlayfield.cs" />
+    <Compile Include="Playfields\IPlayfield.cs" />
     <Compile Include="Contracts\IPosition.cs" />
     <Compile Include="Contracts\IRandomNumberGenerator.cs" />
     <Compile Include="Contracts\IReader.cs" />
     <Compile Include="Contracts\IRenderer.cs" />
+    <Compile Include="Factories\IPlayfieldFactory.cs" />
+    <Compile Include="Factories\PlayfieldFactory.cs" />
     <Compile Include="GlobalConstants.cs" />
-    <Compile Include="Playfield.cs" />
+    <Compile Include="Playfields\LargePlayfield.cs" />
+    <Compile Include="Playfields\MediumPlayfield.cs" />
+    <Compile Include="Playfields\Playfield.cs" />
+    <Compile Include="Playfields\SmallPlayfield.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="RandomNumberGenerator.cs" />
     <Compile Include="Renderer.cs" />

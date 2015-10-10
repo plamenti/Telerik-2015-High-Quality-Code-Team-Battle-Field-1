@@ -1,20 +1,18 @@
-﻿namespace BattleFieldGame
+﻿namespace BattleFieldGame.Playfields
 {
     using System;
     using System.Collections.Generic;
     using BattleFieldGame.Contracts;
 
-    public class Playfield : IPlayfield
+    public abstract class Playfield : IPlayfield
     {
         private const int MaxMineNumber = 5;
-
         private string[,] grid;
         private int size;
 
-        public Playfield(int size)
+        public Playfield()
         {
-            this.Size = size;
-            this.grid = new string[size, size];
+            this.grid = new string[this.size, this.size];
         }
 
         public int Size
@@ -24,7 +22,7 @@
                 return this.size;
             }
 
-            private set
+            protected set
             {
                 if (Validator.IsNegativeOrZeroNumber(value))
                 {
@@ -62,9 +60,9 @@
 
         public void FillPlayfield(IRandomNumberGenerator rng)
         {
-            int minPercent = Convert.ToInt32(GlobalConstants.MinPercent * (this.size * this.size));
-            int maxPercent = Convert.ToInt32(GlobalConstants.MaxPercent * (this.size * this.size));
-            int minesCount = rng.Next(minPercent, maxPercent);
+            this.grid = new string[this.size, this.size];
+
+            int minesCount = this.GetNumberOfMines();
 
             var mines = this.GenerateMines(rng, minesCount);
 
@@ -91,6 +89,8 @@
                 }
             }
         }
+
+        protected abstract int GetNumberOfMines();
 
         private HashSet<IPosition> GenerateMines(IRandomNumberGenerator rng, int minesCount)
         {
