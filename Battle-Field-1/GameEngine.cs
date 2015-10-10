@@ -28,17 +28,6 @@
 
         public void Run()
         {
-            Console.Write(GlobalConstants.WelcomeMessage);
-
-            int playfieldSize = this.reader.ReadSingleNumber();
-
-            while (playfieldSize < GlobalConstants.MinBattleFieldSize || playfieldSize > GlobalConstants.MaxBattleFieldSize)
-            {
-                Console.WriteLine(GlobalConstants.NumberBetweenMessage(GlobalConstants.MinBattleFieldSize, GlobalConstants.MaxBattleFieldSize));
-                playfieldSize = this.reader.ReadSingleNumber();
-            }
-
-            this.playfield = new LargePlayfield();
             this.maxPossibleScore = this.playfield.Size * this.playfield.Size;
             this.playfield.FillPlayfield(this.randomNumberGenerator);
             this.renderer.RenderPlayfield(this.playfield);
