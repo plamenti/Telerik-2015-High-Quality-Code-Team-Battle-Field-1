@@ -1,7 +1,6 @@
-﻿using BattleFieldGame;
-
-namespace BattleField.Tests
+﻿namespace BattleField.Tests
 {
+    using BattleFieldGame;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
@@ -19,7 +18,7 @@ namespace BattleField.Tests
             for (int i = 0; i < checkCount; i++)
             {
                 var generatedNumber = generator.Next(min, max);
-                bool result = (min <= generatedNumber && generatedNumber <= max);
+                bool result = min <= generatedNumber && generatedNumber <= max;
                 if (result == false)
                 {
                     actual = false;
