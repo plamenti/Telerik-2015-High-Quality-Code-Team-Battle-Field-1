@@ -1,11 +1,10 @@
-﻿using System;
-using BattleFieldGame.Contracts;
-using BattleFieldGame.Playfields;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Telerik.JustMock;
-
-namespace BattleField.Tests
+﻿namespace BattleField.Tests
 {
+    using BattleFieldGame.Contracts;
+    using BattleFieldGame.Playfields;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Telerik.JustMock;
+
     [TestClass]
     public class ConsoleRendererTests
     {
