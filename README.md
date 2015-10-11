@@ -23,7 +23,7 @@ In order to ensure the high quality of the assigned project you need to fulfill 
     -   **DONE:** At least 10 of your tests should use **mocking** (Moq, JustMock or other).
 5.  **TODO: Documentation and comments**
     -   **TODO: Document the refactorings** you have performed in order to improve the quality of the project. Use English language and follow the sample (see below). The documentation must be in `.md` (GitHub Markdown) format.
-    -   **TODO:** Document all public members and classes using **XML documentation** within the code and generate **CHM documentation**.
+    -   **DONE:** Document all public members and classes using **XML documentation** within the code and generate **CHM documentation**.
     -   **DONE** Add **code comments** where appropriate
 6.	**DONE: Add new functionalities** to the game. The more functionalities you add the more points you will get.
 	-	Added Save and Load game
