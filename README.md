@@ -21,8 +21,8 @@ In order to ensure the high quality of the assigned project you need to fulfill 
 	-	**DONE:** The code coverage of the unit tests should be at least 90%.
 	-	**DONE:** Use unit testing framework of your choice (e.g. Visual Studio Team Test, NUnit, MbUnit or other).
     -   **DONE:** At least 10 of your tests should use **mocking** (Moq, JustMock or other).
-5.  **TODO: Documentation and comments**
-    -   **TODO: Document the refactorings** you have performed in order to improve the quality of the project. Use English language and follow the sample (see below). The documentation must be in `.md` (GitHub Markdown) format.
+5.  **DONE: Documentation and comments**
+    -   **DONE: Document the refactorings** you have performed in order to improve the quality of the project. Use English language and follow the sample (see below). The documentation must be in `.md` (GitHub Markdown) format.
     -   **DONE:** Document all public members and classes using **XML documentation** within the code and generate **CHM documentation**.
     -   **DONE** Add **code comments** where appropriate
 6.	**DONE: Add new functionalities** to the game. The more functionalities you add the more points you will get.
