@@ -1,7 +1,9 @@
 ﻿namespace BattleFieldGame.Mementos
 {
+    using System;
     using BattleFieldGame.Playfields;
 
+    [Serializable]
     public class Memento
     {
         private string[,] grid;

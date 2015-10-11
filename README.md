@@ -8,7 +8,7 @@ In order to ensure the high quality of the assigned project you need to fulfill 
     -   **DONE Correct behavior** – 
 2.  **TODO: Implement design patterns** – redesign the project to fulfil 9 of the [Software Design patterns](http://en.wikipedia.org/wiki/Software_design_pattern)
     -   **TODO: Structural patterns** – implement **at least 3** of the structural design patterns
-    -   **TODO: Behavior patterns** – implement **at least 3** of the behavioral design patterns
+    -   **DONE: Behavior patterns** – implement **at least 3** of the behavioral design patterns
         * Template Method - **DONE**
         * Strategy - **DONE**
         * Memento - **DONE**

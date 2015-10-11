@@ -3,6 +3,7 @@
     using System;
     using System.Linq;
     using BattleFieldGame.Contracts;
+    using BattleFieldGame.FileCares;
     using BattleFieldGame.Mementos;
     using BattleFieldGame.Playfields;
 
@@ -10,7 +11,7 @@
     {
         private const string ChooseCommand = "Choose \n\rEnter coordinates(Enter only 'Enter')\n\rSave\n\rExit";
         private const string SymbolX = "X";
-        private IRandomNumberGenerator randomNumberGenerator;
+        private const string GameLocation = "..\\..\\myGame.bin";
         private IReader reader;
         private IRenderer renderer;
         private Playfield playfield;
@@ -20,9 +21,8 @@
         private bool isGameOver = false;
         private IPosition currentHit = new Position(0, 0);
 
-        public GameEngine(IRandomNumberGenerator randomNumberGenerator, IReader reader, IRenderer renderer, Playfield playfield)
+        public GameEngine(IReader reader, IRenderer renderer, Playfield playfield)
         {
-            this.randomNumberGenerator = randomNumberGenerator;
             this.reader = reader;
             this.renderer = renderer;
             this.playfield = playfield;
@@ -31,7 +31,6 @@
         public void Run()
         {
             this.maxPossibleScore = this.playfield.Size * this.playfield.Size;
-            this.playfield.FillPlayfield(this.randomNumberGenerator);
             this.renderer.RenderPlayfield(this.playfield);
 
             while (!this.isGameOver)
@@ -225,16 +224,8 @@
                     var memory = new Caretaker();
                     memory.Memento = this.playfield.SaveMemento();
 
-                    for (int row = 0; row < memory.Memento.Grid.GetLength(0); row++)
-                    {
-                        for (int col = 0; col < memory.Memento.Grid.GetLength(1); col++)
-                        {
-                            Console.Write(memory.Memento.Grid[row, col]);
-                        }
-
-                        Console.WriteLine();
-                    }
-
+                    var fileSerializer = new FileSerializer();
+                    fileSerializer.SerializeObject(memory.Memento, GameLocation);
                     break;
                 case "Exit":
                     Environment.Exit(0);

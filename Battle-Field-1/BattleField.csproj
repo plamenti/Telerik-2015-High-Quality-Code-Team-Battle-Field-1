@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="ConsoleReader.cs" />
     <Compile Include="Contracts\IGameEngine.cs" />
+    <Compile Include="FileCares\FileSerializer.cs" />
     <Compile Include="Mementos\Caretaker.cs" />
     <Compile Include="Mementos\Memento.cs" />
     <Compile Include="Playfields\IPlayfield.cs" />

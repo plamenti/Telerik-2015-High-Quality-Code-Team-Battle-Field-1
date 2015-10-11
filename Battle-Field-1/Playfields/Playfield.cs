@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using BattleFieldGame.Contracts;
     using BattleFieldGame.Mementos;
-
+    
     public abstract class Playfield : IPlayfield
     {
         private const int MaxMineNumber = 5;
@@ -98,6 +98,8 @@
 
         public void RestoreMemento(Memento memento)
         {
+            this.grid = new string[this.size, this.size];
+
             for (int row = 0; row < this.size; row++)
             {
                 for (int col = 0; col < this.size; col++)
