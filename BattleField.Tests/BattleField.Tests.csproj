@@ -56,8 +56,9 @@
   </Choose>
   <ItemGroup>
     <Compile Include="ConsoleReaderTests.cs" />
+    <Compile Include="MediumPlayfieldTests.cs" />
     <Compile Include="MementoTests.cs" />
-    <Compile Include="PlayfieldTests.cs" />
+    <Compile Include="SmallPlayfieldTests.cs" />
     <Compile Include="PositionTests.cs" />
     <Compile Include="RandomNumberGeneratorTests.cs" />
     <Compile Include="ConsoleRendererTests.cs" />

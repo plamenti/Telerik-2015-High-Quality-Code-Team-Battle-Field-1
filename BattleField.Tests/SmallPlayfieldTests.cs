@@ -6,7 +6,7 @@
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
-    public class PlayfieldTests
+    public class SmallPlayfieldTests
     {
         [TestMethod]
         public void TestGetCellMethodShouldProperlyReturnSymbol()
