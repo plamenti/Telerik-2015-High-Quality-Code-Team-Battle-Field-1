@@ -3,11 +3,12 @@
     using System;
     using System.Linq;
     using BattleFieldGame.Contracts;
+    using BattleFieldGame.Mementos;
     using BattleFieldGame.Playfields;
 
     public class GameEngine : IGameEngine
     {
-        private const string ChooseCommand = "Choose \n\rEnter coordinates(Enter only 'Enter')\n\rSave";
+        private const string ChooseCommand = "Choose \n\rEnter coordinates(Enter only 'Enter')\n\rSave\n\rExit";
         private const string SymbolX = "X";
         private IRandomNumberGenerator randomNumberGenerator;
         private IReader reader;
@@ -221,7 +222,23 @@
                     this.PlayTurn();
                     break;
                 case "Save":
-                    throw new NotImplementedException();
+                    var memory = new Caretaker();
+                    memory.Memento = this.playfield.SaveMemento();
+
+                    for (int row = 0; row < memory.Memento.Grid.GetLength(0); row++)
+                    {
+                        for (int col = 0; col < memory.Memento.Grid.GetLength(1); col++)
+                        {
+                            Console.Write(memory.Memento.Grid[row, col]);
+                        }
+
+                        Console.WriteLine();
+                    }
+
+                    break;
+                case "Exit":
+                    Environment.Exit(0);
+                    break;
                 default:
                     Console.Clear();
                     Console.WriteLine(ChooseCommand);

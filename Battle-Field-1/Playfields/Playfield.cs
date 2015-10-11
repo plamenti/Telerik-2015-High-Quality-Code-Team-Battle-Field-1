@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using BattleFieldGame.Contracts;
+    using BattleFieldGame.Mementos;
 
     public abstract class Playfield : IPlayfield
     {
@@ -86,6 +87,22 @@
                     {
                         this.SetCell(row, col, "-");
                     }
+                }
+            }
+        }
+
+        public Memento SaveMemento()
+        {
+            return new Memento(this);
+        }
+
+        public void RestoreMemento(Memento memento)
+        {
+            for (int row = 0; row < this.size; row++)
+            {
+                for (int col = 0; col < this.size; col++)
+                {
+                    this.grid[row, col] = memento.Grid[row, col];
                 }
             }
         }
