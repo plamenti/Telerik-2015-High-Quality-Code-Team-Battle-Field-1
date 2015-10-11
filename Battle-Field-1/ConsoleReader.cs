@@ -3,8 +3,15 @@
     using System;
     using BattleFieldGame.Contracts;
 
+    /// <summary>
+    /// Class that read user's input from Console
+    /// </summary>
     public class ConsoleReader : IReader
     {
+        /// <summary>
+        /// Read single number from console and parse it to integer
+        /// </summary>
+        /// <returns>Parsed single number as integer</returns>
         public int ReadSingleNumber()
         {
             string input = Console.ReadLine();
@@ -19,6 +26,10 @@
             return number;
         }
 
+        /// <summary>
+        /// Reads coordinates separated by space from Console
+        /// </summary>
+        /// <returns>Returns array with 2 values - first is row of position and second is col of position</returns>
         public int[] ReadCoordinates()
         {
             int[] coordinates = new int[2];

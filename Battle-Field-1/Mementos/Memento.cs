@@ -3,12 +3,19 @@
     using System;
     using BattleFieldGame.Playfields;
 
+    /// <summary>
+    /// Serializable class that will contains information for playfield in memento design pattern
+    /// </summary>
     [Serializable]
     public class Memento
     {
         private string[,] grid;
         private int size;
 
+        /// <summary>
+        /// Set size, and copy grid from passed playfield
+        /// </summary>
+        /// <param name="playfield"></param>
         public Memento(Playfield playfield)
         {
             this.size = playfield.Size;

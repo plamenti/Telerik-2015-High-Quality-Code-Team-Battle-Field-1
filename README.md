@@ -17,8 +17,8 @@ In order to ensure the high quality of the assigned project you need to fulfill 
     -   **TODO: Creational patterns** – implement **at least 3** of the creational design patterns
         * Factory method - **DONE**
 3.  **DONE Follow the SOLID and DRY principles** – Single responsibility, Open/close, Liskov substitution, Interface segregation, Dependency inversion, Don't repeat yourself
-4.  **TODO: Design and implement unit tests** covering the entire project functionality. 
-	-	**TODO:** The code coverage of the unit tests should be at least 90%.
+4.  **DONE: Design and implement unit tests** covering the entire project functionality. 
+	-	**DONE:** The code coverage of the unit tests should be at least 90%.
 	-	**DONE:** Use unit testing framework of your choice (e.g. Visual Studio Team Test, NUnit, MbUnit or other).
     -   **DONE:** At least 10 of your tests should use **mocking** (Moq, JustMock or other).
 5.  **TODO: Documentation and comments**

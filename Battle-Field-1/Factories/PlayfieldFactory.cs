@@ -2,8 +2,16 @@
 {
     using BattleFieldGame.Playfields;
 
+    /// <summary>
+    /// PlayfieldFactory is class for making new instance of different playfields
+    /// </summary>
     public class PlayfieldFactory : IPlayfieldFactory
     {
+        /// <summary>
+        /// Create new instance of playfield depend of size that is passed to constructor
+        /// </summary>
+        /// <param name="size">Sizes are small, medium and large</param>
+        /// <returns>Returns new instance of SmallPlayfield, MediumPlayfield or LargePlayfield depend of size parameter</returns>
         public Playfield CreatePlayfield(string size)
         {
             switch (size.ToLower())

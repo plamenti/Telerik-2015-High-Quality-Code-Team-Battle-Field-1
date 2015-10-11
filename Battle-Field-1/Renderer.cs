@@ -3,8 +3,15 @@
     using System;
     using BattleFieldGame.Contracts;
 
+    /// <summary>
+    /// Class for easier render in Console
+    /// </summary>
     public class ConsoleRenderer : IRenderer
     {
+        /// <summary>
+        /// Render playfield classes on Console
+        /// </summary>
+        /// <param name="playfield">The playfield that will be draw on Console</param>
         public void RenderPlayfield(IPlayfield playfield)
         {
             for (int row = 0; row < playfield.Size + GlobalConstants.BorderSize; row++)
@@ -70,6 +77,10 @@
             }
         }
 
+        /// <summary>
+        /// Render message on Console
+        /// </summary>
+        /// <param name="message">Message that will be renderer on Console</param>
         public void RenderMessage(string message)
         {
             Console.WriteLine(message);

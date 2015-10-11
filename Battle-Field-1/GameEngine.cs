@@ -7,6 +7,9 @@
     using BattleFieldGame.Mementos;
     using BattleFieldGame.Playfields;
 
+    /// <summary>
+    /// Class that responsible for all game logic
+    /// </summary>
     public class GameEngine : IGameEngine
     {
         private const string ChooseCommand = "Choose \n\rEnter coordinates(Enter only 'Enter')\n\rSave\n\rExit";
@@ -28,6 +31,9 @@
             this.playfield = playfield;
         }
 
+        /// <summary>
+        /// Method that run loop for game moves
+        /// </summary>
         public void Run()
         {
             this.maxPossibleScore = this.playfield.Size * this.playfield.Size;

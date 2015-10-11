@@ -5,12 +5,18 @@
     using BattleFieldGame.FileCares;
     using BattleFieldGame.Playfields;
 
+    /// <summary>
+    /// Entry point of application
+    /// </summary>
     public class Start
     {
         private const string WelcomeMessage = "Welcome to \"Battle Field game.\". Commands from which you can choose are: \n\rNew game\n\rLoad game\n\rExit\n\r";
         private const string ChooseSizeMessage = "Enter size of field \n\rSmall\n\rMedium\n\rLarge\n\r";
         private const string GameLocation = "..\\..\\myGame.bin";
 
+        /// <summary>
+        /// Entry point of application that starts game
+        /// </summary>
         public static void Main()
         {
             Console.WriteLine(WelcomeMessage);
@@ -56,7 +62,7 @@
                     try
                     {
                         var fileSerializer = new FileSerializer();
-                        var memento = fileSerializer.DeSerializeObject(GameLocation);
+                        var memento = fileSerializer.DeserializeObject(GameLocation);
                         playfield = factory.CreatePlayfield(ConvertNumberToString(memento.Grid.GetLength(0)));
                         playfield.RestoreMemento(memento);
                         
