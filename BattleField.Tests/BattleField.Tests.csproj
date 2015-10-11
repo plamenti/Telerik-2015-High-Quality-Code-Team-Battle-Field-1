@@ -60,6 +60,7 @@
     <Compile Include="PositionTests.cs" />
     <Compile Include="RandomNumberGeneratorTests.cs" />
     <Compile Include="ConsoleRendererTests.cs" />
+    <Compile Include="GameEngineTests.cs" />
     <Compile Include="ValidatorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
