@@ -1,0 +1,5 @@
+C:\Users\1\Dropbox\Telerik2015\High-Quality-Code\TeamWork\Telerik-2015-High-Quality-Code-Team-Battle-Field-1\Battle-Field-1\bin\Debug\BattleFieldGame.exe
+C:\Users\1\Dropbox\Telerik2015\High-Quality-Code\TeamWork\Telerik-2015-High-Quality-Code-Team-Battle-Field-1\Battle-Field-1\bin\Debug\BattleFieldGame.pdb
+C:\Users\1\Dropbox\Telerik2015\High-Quality-Code\TeamWork\Telerik-2015-High-Quality-Code-Team-Battle-Field-1\Battle-Field-1\obj\x86\Debug\BattleField.csprojResolveAssemblyReference.cache
+C:\Users\1\Dropbox\Telerik2015\High-Quality-Code\TeamWork\Telerik-2015-High-Quality-Code-Team-Battle-Field-1\Battle-Field-1\obj\x86\Debug\BattleFieldGame.exe
+C:\Users\1\Dropbox\Telerik2015\High-Quality-Code\TeamWork\Telerik-2015-High-Quality-Code-Team-Battle-Field-1\Battle-Field-1\obj\x86\Debug\BattleFieldGame.pdb

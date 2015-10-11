@@ -1,0 +1,9 @@
+C:\Users\1\Dropbox\Telerik2015\High-Quality-Code\TeamWork\Telerik-2015-High-Quality-Code-Team-Battle-Field-1\BattleField.Tests\bin\Debug\BattleField.Tests.dll
+C:\Users\1\Dropbox\Telerik2015\High-Quality-Code\TeamWork\Telerik-2015-High-Quality-Code-Team-Battle-Field-1\BattleField.Tests\bin\Debug\BattleField.Tests.pdb
+C:\Users\1\Dropbox\Telerik2015\High-Quality-Code\TeamWork\Telerik-2015-High-Quality-Code-Team-Battle-Field-1\BattleField.Tests\bin\Debug\BattleFieldGame.exe
+C:\Users\1\Dropbox\Telerik2015\High-Quality-Code\TeamWork\Telerik-2015-High-Quality-Code-Team-Battle-Field-1\BattleField.Tests\bin\Debug\Telerik.JustMock.dll
+C:\Users\1\Dropbox\Telerik2015\High-Quality-Code\TeamWork\Telerik-2015-High-Quality-Code-Team-Battle-Field-1\BattleField.Tests\bin\Debug\BattleFieldGame.pdb
+C:\Users\1\Dropbox\Telerik2015\High-Quality-Code\TeamWork\Telerik-2015-High-Quality-Code-Team-Battle-Field-1\BattleField.Tests\bin\Debug\Telerik.JustMock.xml
+C:\Users\1\Dropbox\Telerik2015\High-Quality-Code\TeamWork\Telerik-2015-High-Quality-Code-Team-Battle-Field-1\BattleField.Tests\obj\Debug\BattleField.Tests.csprojResolveAssemblyReference.cache
+C:\Users\1\Dropbox\Telerik2015\High-Quality-Code\TeamWork\Telerik-2015-High-Quality-Code-Team-Battle-Field-1\BattleField.Tests\obj\Debug\BattleField.Tests.dll
+C:\Users\1\Dropbox\Telerik2015\High-Quality-Code\TeamWork\Telerik-2015-High-Quality-Code-Team-Battle-Field-1\BattleField.Tests\obj\Debug\BattleField.Tests.pdb
