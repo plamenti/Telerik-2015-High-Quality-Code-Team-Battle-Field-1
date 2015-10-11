@@ -8,7 +8,7 @@
         {
             switch (size.ToLower())
             {
-                case"small":
+                case "small":
                     return this.CreateSmallPlayfield();
                 case "medium":
                     return this.CreateMediumPlayfield();

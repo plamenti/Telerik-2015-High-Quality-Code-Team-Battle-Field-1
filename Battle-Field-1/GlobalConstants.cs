@@ -9,7 +9,7 @@
         public const double MaxPercent = 0.30;
 
         public const string EnterCoordinates = "Please enter coordinates/row, col/ stared from zero(0), separated by whitespace: ";
-        public const string InvalidMove = "Invalid move!";        
+        public const string InvalidMove = "Invalid move!";
 
         private const string NegativeMessage = " cannot be negative number";
         private const string OutOfRangeMessage = " is out of range";

@@ -15,7 +15,7 @@
 
             string input = Console.ReadLine();
 
-            ProceedCommand(input);            
+            ProceedCommand(input);
         }
 
         private static void ProceedCommand(string command)

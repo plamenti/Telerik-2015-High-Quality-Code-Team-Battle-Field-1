@@ -225,7 +225,7 @@
                 default:
                     Console.Clear();
                     Console.WriteLine(ChooseCommand);
-                    this.ProceedCommand(Console.ReadLine());                    
+                    this.ProceedCommand(Console.ReadLine());
                     break;
             }
         }
