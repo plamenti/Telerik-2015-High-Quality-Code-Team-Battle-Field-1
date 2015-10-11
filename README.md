@@ -8,6 +8,7 @@ In order to ensure the high quality of the assigned project you need to fulfill 
     -   **DONE Correct behavior** – 
 2.  **TODO: Implement design patterns** – redesign the project to fulfil 9 of the [Software Design patterns](http://en.wikipedia.org/wiki/Software_design_pattern)
     -   **TODO: Structural patterns** – implement **at least 3** of the structural design patterns
+    	* Facade - **DONE**
     -   **DONE: Behavior patterns** – implement **at least 3** of the behavioral design patterns
         * Template Method - **DONE**
         * Strategy - **DONE**
@@ -23,5 +24,5 @@ In order to ensure the high quality of the assigned project you need to fulfill 
     -   **TODO: Document the refactorings** you have performed in order to improve the quality of the project. Use English language and follow the sample (see below). The documentation must be in `.md` (GitHub Markdown) format.
     -   **TODO:** Document all public members and classes using **XML documentation** within the code and generate **CHM documentation**.
     -   **DONE** Add **code comments** where appropriate
-6.	**TODO: Add new functionalities** to the game. The more functionalities you add the more points you will get.
-	-	Follow all principles and unit test you new game functionalities.
+6.	**DONE: Add new functionalities** to the game. The more functionalities you add the more points you will get.
+	-	Added Save and Load game
