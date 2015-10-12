@@ -1,6 +1,7 @@
 ﻿namespace BattleFieldGame
 {
     using System;
+    using System.IO;
     using BattleFieldGame.Factories;
     using BattleFieldGame.FileCares;
     using BattleFieldGame.Playfields;
@@ -65,6 +66,8 @@
                         var memento = fileSerializer.DeserializeObject(GameLocation);
                         playfield = factory.CreatePlayfield(ConvertNumberToString(memento.Grid.GetLength(0)));
                         playfield.RestoreMemento(memento);
+
+                        File.Delete(GameLocation);
                         
                         var game = new GameEngine(reader, renderer, playfield);
                         game.Run();
