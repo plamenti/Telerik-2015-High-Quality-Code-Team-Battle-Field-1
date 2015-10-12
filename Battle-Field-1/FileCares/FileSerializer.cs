@@ -8,7 +8,7 @@
     /// <summary>
     /// Class that serialize and deserialize Memento objects
     /// </summary>
-    public class FileSerializer
+    public class FileSerializer : IFileSerializable
     {
         /// <summary>
         /// Serialize object in binary format
