@@ -97,7 +97,7 @@
             }
             else if (number == 5)
             {
-                return "Mediun";
+                return "Medium";
             }
             else
             {
