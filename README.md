@@ -30,11 +30,11 @@ In order to ensure the high quality of the assigned project you need to fulfill 
 
 
 ##### Active participants:
-Adrian.bozhanko - Адриан Божанков(AdrianBozhankov)
-Plamenti - Пламен Костадинов(plamenti)
-Beardhammer - Мартин Али(Tectonik)
-forcodesake - Мирослав Пенчев(mpenchev86)
+- Adrian.bozhanko - Адриан Божанков(AdrianBozhankov)
+- Plamenti - Пламен Костадинов(plamenti)
+- Beardhammer - Мартин Али(Tectonik)
+- forcodesake - Мирослав Пенчев(mpenchev86)
 
 ##### Inactive participants
-Y.Maltsev - Яни Малцев
-Puncky - Пламен Паунов(Puncky) - small contribution
+- Y.Maltsev - Яни Малцев
+- Puncky - Пламен Паунов(Puncky) - small contribution
